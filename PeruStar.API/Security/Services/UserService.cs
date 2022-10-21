@@ -27,7 +27,7 @@ public class UserService: IUserService
 
     public async Task<AuthenticateResponse> AuthenticateAsync(AuthenticateRequest request)
     {
-        var user = await _userRepository.FindByEmailAsync(request.Email!);
+        var user = await _userRepository.FindByEmailAsync(request.Email);
         // Validate
         if (user.Equals(null) || !BCryptNet.Verify(request.Password, user.PasswordHash))
         {

@@ -8,6 +8,7 @@ using PeruStar.API.PeruStar.Services;
 using PeruStar.API.Security.Authorization.Handlers.Implementations;
 using PeruStar.API.Security.Authorization.Handlers.Interfaces;
 using PeruStar.API.Security.Authorization.Middleware;
+using PeruStar.API.Security.Authorization.Settings;
 using PeruStar.API.Security.Domain.Repositories;
 using PeruStar.API.Security.Domain.Services;
 using PeruStar.API.Security.Persistence.Repositories;
@@ -30,6 +31,10 @@ builder.Services.AddDbContext<AppDbContext>(
         .EnableSensitiveDataLogging()
         .EnableDetailedErrors());
 
+// AppSettings Configuration
+
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+
 // OpenAPI Configuration
 
 builder.Services.AddSwaggerGen(options =>
@@ -51,6 +56,29 @@ builder.Services.AddSwaggerGen(options =>
     }
     });
     options.EnableAnnotations();
+    options.AddSecurityDefinition("bearerAuth", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\""
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "bearerAuth"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
 });
 
 

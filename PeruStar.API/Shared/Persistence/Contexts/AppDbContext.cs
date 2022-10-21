@@ -286,15 +286,7 @@ public class AppDbContext: DbContext
         builder.Entity<Hobbyist>().ToTable("Hobbyists");
         builder.Entity<Hobbyist>().Property(h => h.Firstname).IsRequired().HasMaxLength(50);
         builder.Entity<Hobbyist>().Property(h => h.Lastname).IsRequired().HasMaxLength(50);
-        
-        // Relationships
-        /*
-          public IList<Interest> Interests { get; set; } = new List<Interest>();
-    public IList<FavoriteArtwork> FavoriteArtworks { get; set; } = new List<FavoriteArtwork>();
-    public IList<Follower> Followers { get; set; } = new List<Follower>();
-    public IList<EventAssistance> Assistance { get; set; } = new List<EventAssistance>();
-    public IList<ClaimTicket> ClaimedTickets { get; set; } = new List<ClaimTicket>();
-         */
+ 
         
         builder.Entity<Hobbyist>()
             .HasMany(h => h.Interests)

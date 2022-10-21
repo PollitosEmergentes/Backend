@@ -1,5 +1,4 @@
-﻿
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PeruStar.API.Security.Authorization.Attributes;
 using PeruStar.API.Security.Domain.Models;
@@ -52,8 +51,7 @@ public class UserController: ControllerBase
         await _userService.RegisterAsync(request);
         return Ok(new { message = "User registered successfully" });
     }
-    
-    [AllowAnonymous]
+    [Authorize]
     [HttpGet]
     [SwaggerOperation(
         Summary = "Get all users",
