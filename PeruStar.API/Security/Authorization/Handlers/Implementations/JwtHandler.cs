@@ -1,13 +1,13 @@
 ﻿using PeruStar.API.Security.Authorization.Handlers.Interfaces;
 using PeruStar.API.Security.Authorization.Settings;
 using PeruStar.API.Security.Domain.Models;
-
-namespace PeruStar.API.Security.Authorization.Handlers.Implementations;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+
+namespace PeruStar.API.Security.Authorization.Handlers.Implementations;
 
 public class JwtHandler: IJwtHandler
 {
@@ -46,7 +46,7 @@ public class JwtHandler: IJwtHandler
             return null;
 
         var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+        var key = Encoding.ASCII.GetBytes(_appSettings.Secret!);
         
         // Execute Token Validation
         try

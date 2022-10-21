@@ -53,6 +53,7 @@ public class UserController: ControllerBase
         return Ok(new { message = "User registered successfully" });
     }
     
+    [AllowAnonymous]
     [HttpGet]
     [SwaggerOperation(
         Summary = "Get all users",
@@ -73,7 +74,7 @@ public class UserController: ControllerBase
         Description = "Get a user by id",
         OperationId = "GetById",
         Tags = new[] { "User" })]
-    public async Task<IActionResult> GetById(int id)
+    public async Task<IActionResult> GetById(long id)
     {
         var response = await _userService.FindByIdAsync(id);
         var resource = _mapper.Map<User, UserResource>(response);

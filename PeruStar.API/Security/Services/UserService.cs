@@ -28,7 +28,7 @@ public class UserService: IUserService
     public async Task<AuthenticateResponse> AuthenticateAsync(AuthenticateRequest request)
     {
         var user = await _userRepository.FindByEmailAsync(request.Email!);
-        //Valite
+        // Validate
         if (user.Equals(null) || !BCryptNet.Verify(request.Password, user.PasswordHash))
         {
             throw new AppExceptions("Invalid credentials");
@@ -43,7 +43,7 @@ public class UserService: IUserService
         return await _userRepository.ListAsync();
     }
 
-    public async Task<User> FindByIdAsync(int id)
+    public async Task<User> FindByIdAsync(long id)
     {
         var user = await _userRepository.FindByIdAsync(id);
         if (user.Equals(null))
@@ -72,7 +72,7 @@ public class UserService: IUserService
         }
     }
 
-    public async Task UpdateAsync(int id, UpdateRequest request)
+    public async Task UpdateAsync(long id, UpdateRequest request)
     {
         var user=await _userRepository.FindByIdAsync(id);
         var userWithSameEmail = await _userRepository.FindByEmailAsync(request.Email!);
@@ -100,7 +100,7 @@ public class UserService: IUserService
         }
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task DeleteAsync(long id)
     {
         var user = await _userRepository.FindByIdAsync(id);
         if (user.Equals(null))
