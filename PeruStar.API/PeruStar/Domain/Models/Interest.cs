@@ -2,6 +2,7 @@
 
 public class Interest
 {
+    public long Id { get; set; }
     public long HobbyistId { get; set; }
     public Hobbyist? Hobbyist { get; set; }
     public long SpecialtyId { get; set; }

@@ -72,7 +72,6 @@ builder.Services.AddScoped<IArtistRepository, ArtistRepository>();
 builder.Services.AddScoped<IArtistService, ArtistService>();
 builder.Services.AddScoped<IArtworkRepository, ArtworkRepository>();
 builder.Services.AddScoped<IArtworkService, ArtworkService>();
-builder.Services.AddScoped<IArtistRepository, ArtistRepository>();
 builder.Services.AddScoped<IClaimTicketRepository, ClaimTicketRepository>();
 builder.Services.AddScoped<IClaimTicketService, ClaimTicketService>();
 builder.Services.AddScoped<IEventRepository, EventRepository>();
@@ -87,6 +86,8 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IHobbyistRepository, HobbyistRepository>();
 builder.Services.AddScoped<IHobbyistService, HobbyistService>();
+builder.Services.AddScoped<IInterestRepository, InterestRepository>();
+builder.Services.AddScoped<IInterestService, InterestService>();
 
 //Security injection configuration
 builder.Services.AddScoped<IJwtHandler, JwtHandler>();

@@ -44,7 +44,7 @@ namespace PeruStar.API.PeruStar.Controllers
          OperationId = "ListFollowersByArtistId")]
         [SwaggerResponse(200, "List of Followers By Artist Id", typeof(IEnumerable<FollowerResource>))]
 
-        [HttpGet]
+        [HttpGet("{artistId}")]
         [ProducesResponseType(typeof(IEnumerable<FollowerResource>), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IEnumerable<FollowerResource>> GetAllByArtistIdAsync(long artistId)

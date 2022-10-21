@@ -16,6 +16,7 @@ public class HobbyistRepository : BaseRepository, IHobbyistRepository
     {
         return await _context.Hobbyists.ToListAsync();
     }
+    
 
     public async Task AddAsync(Hobbyist hobbyist)
     {

@@ -6,5 +6,5 @@ public class Person
     public string? Firstname { get; set; }
     public string? Lastname { get; set; }
     public IList<ClaimTicket> ClaimTickets { get; set; } = new List<ClaimTicket>();  //Reports that the Person makes
-    public IList<ClaimTicket> ReportsClaimTickets { get; set; } = new List<ClaimTicket>();  //Reports you make to the person
+   // public IList<ClaimTicket> ReportsClaimTickets { get; set; } = new List<ClaimTicket>();  //Reports you make to the person
 }

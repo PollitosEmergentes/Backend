@@ -2,7 +2,8 @@
 
 public class Follower
 {
-    public IList<Hobbyist>? Hobbyist { get; set; } = new List<Hobbyist>();
+    public long Id { get; set; }
+    public Hobbyist? Hobbyist { get; set; }
     public long HobbyistId { get; set; }
     public Artist? Artist { get; set; }
     public long ArtistId { get; set; }
