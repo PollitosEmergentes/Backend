@@ -6,7 +6,7 @@ using PeruStar.API.PeruStar.Resources;
 using PeruStar.API.Shared.Extensions;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace PeruStar.API.PeruStar.Controllers;
+namespace PeruStar.API.Artist.Controllers;
 
 [ApiController]
 [Route("api/artists/{artistId}/claimTickets")]

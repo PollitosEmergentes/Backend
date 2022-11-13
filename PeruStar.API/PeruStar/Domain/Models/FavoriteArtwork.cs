@@ -7,6 +7,6 @@ public class FavoriteArtwork
     public long HobbyistId { get; set; }
     public Artwork? Artwork { get; set; }
     public long ArtworkId { get; set; }
-    public Artist? Artist { get; set; }
+    public Artist.Domain.Models.Artist? Artist { get; set; }
     public long ArtistId { get; set; }
 }

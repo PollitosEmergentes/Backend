@@ -8,6 +8,6 @@ public class Artwork
     public double ArtCost { get; set; }
     public string? LinkInfo { get; set; }
     public long ArtistId { get; set; }
-    public Artist? Artist { get; set; }
+    public Artist.Domain.Models.Artist? Artist { get; set; }
     public IList<FavoriteArtwork> FavoriteArtworks { get; set; } = new List<FavoriteArtwork>();
 }

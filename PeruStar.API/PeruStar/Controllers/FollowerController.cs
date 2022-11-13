@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using PeruStar.API.Artist.Resource;
 using PeruStar.API.PeruStar.Domain.Models;
 using PeruStar.API.PeruStar.Domain.Services;
 using PeruStar.API.PeruStar.Resources;
@@ -69,7 +70,7 @@ namespace PeruStar.API.PeruStar.Controllers
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var artistResource = _mapper.Map<Artist, ArtistResource>(result.Resource.Artist);
+            var artistResource = _mapper.Map<Artist.Domain.Models.Artist, ArtistResource>(result.Resource.Artist!);
             return Ok(artistResource);
         }
 
@@ -88,7 +89,7 @@ namespace PeruStar.API.PeruStar.Controllers
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var artistResource = _mapper.Map<Artist, ArtistResource>(result.Resource.Artist);
+            var artistResource = _mapper.Map<Artist.Domain.Models.Artist, ArtistResource>(result.Resource.Artist!);
             return Ok(artistResource);
         }
 

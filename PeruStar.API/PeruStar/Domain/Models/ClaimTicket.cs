@@ -16,6 +16,6 @@ public class ClaimTicket
     public Person? ReportMadeBy { get; set; }
     public long ReportedPersonId { get; set; }
     public long ReportMadeById { get; set; }
-    public Artist? Artist { get; set; }
+    public Artist.Domain.Models.Artist? Artist { get; set; }
     public long ArtistId { get; set; }
 }

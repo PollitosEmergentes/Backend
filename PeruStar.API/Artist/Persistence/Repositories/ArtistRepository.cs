@@ -1,10 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PeruStar.API.PeruStar.Domain.Models;
-using PeruStar.API.PeruStar.Domain.Repositories;
+using PeruStar.API.Artist.Domain.Repositories;
 using PeruStar.API.Shared.Persistence.Contexts;
 using PeruStar.API.Shared.Persistence.Repositories;
 
-namespace PeruStar.API.PeruStar.Persistence.Repositories;
+namespace PeruStar.API.Artist.Persistence.Repositories;
 
 public class ArtistRepository : BaseRepository, IArtistRepository
 {
@@ -12,27 +11,27 @@ public class ArtistRepository : BaseRepository, IArtistRepository
     {
     }
 
-    public async Task<IEnumerable<Artist>> ListAsync()
+    public async Task<IEnumerable<Domain.Models.Artist>> ListAsync()
     {
         return await _context.Artists.ToListAsync();
     }
 
-    public async Task AddAsync(Artist artist)
+    public async Task AddAsync(Domain.Models.Artist artist)
     {
         await _context.Artists.AddAsync(artist);
     }
 
-    public async Task<Artist> FindById(long id)
+    public async Task<Domain.Models.Artist> FindById(long id)
     {
         return (await _context.Artists.FindAsync(id))!;
     }
 
-    public void Update(Artist artist)
+    public void Update(Domain.Models.Artist artist)
     {
         _context.Artists.Update(artist);
     }
 
-    public void Remove(Artist artist)
+    public void Remove(Domain.Models.Artist artist)
     {
         _context.Artists.Remove(artist);
     }

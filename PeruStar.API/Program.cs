@@ -1,5 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using PeruStar.API.Artist.Domain.Repositories;
+using PeruStar.API.Artist.Domain.Services;
+using PeruStar.API.Artist.Persistence.Repositories;
+using PeruStar.API.Artist.Services;
 using PeruStar.API.PeruStar.Domain.Models;
 using PeruStar.API.PeruStar.Domain.Repositories;
 using PeruStar.API.PeruStar.Domain.Services;
@@ -125,7 +129,9 @@ builder.Services.AddAutoMapper(
     typeof(PeruStar.API.PeruStar.Mapping.ModelToResourceProfile), 
     typeof(PeruStar.API.PeruStar.Mapping.ResourceToModelProfile),
     typeof(PeruStar.API.Security.Mapping.ModelToResourceProfile),
-    typeof(PeruStar.API.Security.Mapping.ResourceToModelProfile));
+    typeof(PeruStar.API.Security.Mapping.ResourceToModelProfile),
+    typeof(PeruStar.API.Artist.Mapping.ModelToResourceProfile),
+    typeof(PeruStar.API.Artist.Mapping.ResourceToModelProfile));
 
 var app = builder.Build();
 

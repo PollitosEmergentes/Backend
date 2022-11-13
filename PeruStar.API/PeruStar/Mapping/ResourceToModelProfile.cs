@@ -8,7 +8,7 @@ public class ResourceToModelProfile: Profile
 {
     public ResourceToModelProfile()
     { 
-        CreateMap<SaveArtistResource, Artist>();
+        
        CreateMap<SaveArtworkResource, Artwork>();
        CreateMap<SaveClaimTicketResource, ClaimTicket>();
        CreateMap<SaveEventResource, Event>();

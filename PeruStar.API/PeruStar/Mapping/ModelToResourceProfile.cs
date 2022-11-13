@@ -9,7 +9,6 @@ public class ModelToResourceProfile : Profile
 {
     public ModelToResourceProfile()
     {
-        CreateMap<Artist, ArtistResource>();
         CreateMap<Artwork, ArtworkResource>();
         CreateMap<ClaimTicket, ClaimTicketResource>();
         CreateMap<Event, EventResource>();

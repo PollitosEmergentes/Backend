@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PeruStar.API.PeruStar.Resources;
+namespace PeruStar.API.Artist.Resource;
 
 public class SaveArtistResource
 

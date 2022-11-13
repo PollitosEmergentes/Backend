@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using PeruStar.API.Artist.Resource;
 using PeruStar.API.PeruStar.Domain.Models;
 using PeruStar.API.PeruStar.Domain.Services;
 using PeruStar.API.PeruStar.Resources;

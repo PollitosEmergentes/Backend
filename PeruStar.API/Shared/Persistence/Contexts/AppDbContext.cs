@@ -12,7 +12,7 @@ public class AppDbContext: DbContext
     {
     }
     // Declare DbSet of the entity
-    public DbSet<Artist> Artists { get; set; } = null!;
+    public DbSet<Artist.Domain.Models.Artist> Artists { get; set; } = null!;
     public DbSet<Artwork> Artworks { get; set; } = null!;
     public DbSet<ClaimTicket> ClaimTickets { get; set; } = null!;
     public DbSet<EventAssistance> EventAssistances { get; set; } = null!;
@@ -57,52 +57,52 @@ public class AppDbContext: DbContext
         // Relationships
         
         //  Artist entity
-        builder.Entity<Artist>().ToTable("Artists");
-        builder.Entity<Artist>().Property(p => p.BrandName).IsRequired().HasMaxLength(100);
-        builder.Entity<Artist>().Property(p => p.SpecialtyId).IsRequired();
-        builder.Entity<Artist>().Property(p => p.Description).IsRequired().HasMaxLength(1000);
-        builder.Entity<Artist>().Property(p => p.Phrase).IsRequired().HasMaxLength(100);
-        builder.Entity<Artist>().Property(p => p.SocialMediaLink).HasConversion(
+        builder.Entity<Artist.Domain.Models.Artist>().ToTable("Artists");
+        builder.Entity<Artist.Domain.Models.Artist>().Property(p => p.BrandName).IsRequired().HasMaxLength(100);
+        builder.Entity<Artist.Domain.Models.Artist>().Property(p => p.SpecialtyId).IsRequired();
+        builder.Entity<Artist.Domain.Models.Artist>().Property(p => p.Description).IsRequired().HasMaxLength(1000);
+        builder.Entity<Artist.Domain.Models.Artist>().Property(p => p.Phrase).IsRequired().HasMaxLength(100);
+        builder.Entity<Artist.Domain.Models.Artist>().Property(p => p.SocialMediaLink).HasConversion(
             links => string.Join(',', links.ToArray()),                                         //Como se guarda en la base de datos: Links = "Link1,Link2,Link3"
             links => links.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList());         //Come se lee de la base de datos Links=e[0],e[1],e[2]
         // Relationships
         
-        builder.Entity<Artist>() 
+        builder.Entity<Artist.Domain.Models.Artist>() 
             .HasMany(p => p.Artworks)
             .WithOne(p => p.Artist)
             .HasForeignKey(p => p.ArtistId);
         
-        builder.Entity<Artist>() 
+        builder.Entity<Artist.Domain.Models.Artist>() 
             .HasMany(p => p.ClaimTickets)
             .WithOne(p => p.Artist)
             .HasForeignKey(p => p.ArtistId);
 
-        builder.Entity<Artist>()
+        builder.Entity<Artist.Domain.Models.Artist>()
             .HasMany(p => p.Events)
             .WithOne(p => p.Artist)
             .HasForeignKey(p => p.ArtistId);
 
-        builder.Entity<Artist>()
+        builder.Entity<Artist.Domain.Models.Artist>()
             .HasOne(p => p.Specialty)
             .WithMany(p => p.Artists)
             .HasForeignKey(p => p.SpecialtyId);
         
-        builder.Entity<Artist>()
+        builder.Entity<Artist.Domain.Models.Artist>()
             .HasMany(p => p.Followers)
             .WithOne(p => p.Artist)
             .HasForeignKey(p => p.ArtistId);
         
-        builder.Entity<Artist>()
+        builder.Entity<Artist.Domain.Models.Artist>()
             .HasMany(p=>p.ClaimTickets)
             .WithOne(p=>p.Artist)
             .HasForeignKey(p=>p.ArtistId);
         
-        builder.Entity<Artist>()
+        builder.Entity<Artist.Domain.Models.Artist>()
             .HasMany(p=>p.FavoriteArtworks)
             .WithOne(p=>p.Artist)
             .HasForeignKey(p=>p.ArtistId);
         
-        builder.Entity<Artist>()
+        builder.Entity<Artist.Domain.Models.Artist>()
             .HasMany(p=>p.EventAssistances)
             .WithOne(p=>p.Artist)
             .HasForeignKey(p=>p.ArtistId);
