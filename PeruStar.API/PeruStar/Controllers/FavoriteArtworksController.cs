@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using PeruStar.API.PeruStar.Domain.Models;
+using PeruStar.API.Artwork.Domain.Services;
+using PeruStar.API.Artwork.Resources;
 using PeruStar.API.PeruStar.Domain.Services;
 using PeruStar.API.PeruStar.Resources;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace PeruStar.API.PeruStar.Controllers;
+namespace PeruStar.API.Artwork.Controllers.Controllers;
 
 [ApiController]
 [Route("api/hobbyists/{hobbyistId}/artworks")]
@@ -42,7 +43,7 @@ public class FavoriteArtworksController: ControllerBase
         public async Task<IEnumerable<ArtworkResource>> GetAllByHobbyistIdAsync(long hobbyistId)
         {
             var artworks = await _artworkService.ListByHobbyistAsync(hobbyistId);
-            var resources = _mapper.Map<IEnumerable<Artwork>, IEnumerable<ArtworkResource>>(artworks);
+            var resources = _mapper.Map<IEnumerable<Domain.Models.Artwork>, IEnumerable<ArtworkResource>>(artworks);
             return resources;
         }
 
@@ -66,7 +67,7 @@ public class FavoriteArtworksController: ControllerBase
             var result = await _favoriteArtworkService.AssignFavoriteArtworkAsync(hobbyistId, artworkId);
             if (!result.Success)
                 return BadRequest(result.Message);
-            var artworkResource = _mapper.Map<Artwork, ArtworkResource>(result.Resource.Artwork!);
+            var artworkResource = _mapper.Map<Domain.Models.Artwork, ArtworkResource>(result.Resource.Artwork!);
             return Ok(artworkResource);
         }
 
@@ -90,7 +91,7 @@ public class FavoriteArtworksController: ControllerBase
             var result = await _favoriteArtworkService.UnassignFavoriteArtworkAsync(hobbyistId, artworkId);
             if (!result.Success)
                 return BadRequest(result.Message);
-            var favoriteArtworkResource = _mapper.Map<Artwork, ArtworkResource>(result.Resource.Artwork!);
+            var favoriteArtworkResource = _mapper.Map<Domain.Models.Artwork, ArtworkResource>(result.Resource.Artwork!);
             return Ok(favoriteArtworkResource);
         }
 }

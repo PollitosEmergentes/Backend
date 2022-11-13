@@ -12,6 +12,6 @@ public class Event
     public string? EventDescription { get; set; }
     public string? EventAditionalInfo { get; set; }
     public long ArtistId { get; set; }
-    public Artist? Artist { get; set; }
+    public Artist.Domain.Models.Artist? Artist { get; set; }
     public IList<EventAssistance>  Assistance { get; set; } = new List<EventAssistance>();
 }

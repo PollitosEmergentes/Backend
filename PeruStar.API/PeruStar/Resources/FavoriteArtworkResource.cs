@@ -1,4 +1,6 @@
-﻿namespace PeruStar.API.PeruStar.Resources;
+﻿using PeruStar.API.Artwork.Resources;
+
+namespace PeruStar.API.PeruStar.Resources;
 
 public class FavoriteArtworkResource
 {
