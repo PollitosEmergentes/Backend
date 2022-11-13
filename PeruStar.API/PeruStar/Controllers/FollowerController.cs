@@ -6,7 +6,7 @@ using PeruStar.API.PeruStar.Domain.Services;
 using PeruStar.API.PeruStar.Resources;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace PeruStar.API.PeruStar.Controllers
+namespace PeruStar.API.Artwork.Controllers.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

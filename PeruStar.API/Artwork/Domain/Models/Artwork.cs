@@ -1,4 +1,6 @@
-﻿namespace PeruStar.API.PeruStar.Domain.Models;
+﻿using PeruStar.API.PeruStar.Domain.Models;
+
+namespace PeruStar.API.Artwork.Domain.Models;
 
 public class Artwork
 {

@@ -5,7 +5,7 @@ using PeruStar.API.PeruStar.Domain.Services;
 using PeruStar.API.PeruStar.Resources;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace PeruStar.API.PeruStar.Controllers;
+namespace PeruStar.API.Artwork.Controllers.Controllers;
 
 [Route("api/hobbyists/{hobbyistId}/reports")]
 [Produces("application/json")]

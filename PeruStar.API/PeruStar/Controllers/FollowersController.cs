@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PeruStar.API.Artist.Resource;
-using PeruStar.API.PeruStar.Domain.Models;
 using PeruStar.API.PeruStar.Domain.Services;
-using PeruStar.API.PeruStar.Resources;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace PeruStar.API.PeruStar.Controllers;
+namespace PeruStar.API.Artwork.Controllers.Controllers;
 
 
 [Route("/api/artists/{artistId}/followers")]

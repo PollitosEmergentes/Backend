@@ -1,10 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PeruStar.API.PeruStar.Domain.Models;
-using PeruStar.API.PeruStar.Domain.Repositories;
+using PeruStar.API.Artwork.Domain.Repositories;
 using PeruStar.API.Shared.Persistence.Contexts;
 using PeruStar.API.Shared.Persistence.Repositories;
 
-namespace PeruStar.API.PeruStar.Persistence.Repositories;
+namespace PeruStar.API.Artwork.Persistence.Repositories;
 
 public class ArtworkRepository: BaseRepository, IArtworkRepository
 {
@@ -12,17 +11,17 @@ public class ArtworkRepository: BaseRepository, IArtworkRepository
     {
     }
 
-    public async Task<IEnumerable<Artwork>> ListAsync()
+    public async Task<IEnumerable<Domain.Models.Artwork>> ListAsync()
     {
         return await _context.Artworks.ToListAsync();
     }
 
-    public async Task AddAsync(Artwork artwork)
+    public async Task AddAsync(Domain.Models.Artwork artwork)
     {
         await _context.Artworks.AddAsync(artwork);
     }
 
-    public async Task<Artwork> FindByIdAndArtistIdAsync(long id, long artistId)
+    public async Task<Domain.Models.Artwork> FindByIdAndArtistIdAsync(long id, long artistId)
     {
         return (await _context.Artworks
             .Where(a => a.ArtworkId == id && a.ArtistId == artistId)
@@ -30,17 +29,17 @@ public class ArtworkRepository: BaseRepository, IArtworkRepository
     }
 
 
-    public async Task<IEnumerable<Artwork>> ListByArtistIdAsync(long artistId)
+    public async Task<IEnumerable<Domain.Models.Artwork>> ListByArtistIdAsync(long artistId)
     {
         return await _context.Artworks.Where(a => a.ArtistId == artistId).ToListAsync();
     }
 
-    public void Update(Artwork artwork)
+    public void Update(Domain.Models.Artwork artwork)
     {
         _context.Artworks.Update(artwork);
     }
 
-    public void Remove(Artwork artwork)
+    public void Remove(Domain.Models.Artwork artwork)
     {
         _context.Artworks.Remove(artwork);
     }

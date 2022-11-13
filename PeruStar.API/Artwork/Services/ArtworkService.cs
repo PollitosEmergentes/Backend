@@ -1,13 +1,13 @@
 ﻿using PeruStar.API.Artist.Domain.Repositories;
-using PeruStar.API.PeruStar.Domain.Models;
-using PeruStar.API.PeruStar.Domain.Repositories;
-using PeruStar.API.PeruStar.Domain.Services;
-using PeruStar.API.PeruStar.Domain.Services.Communication;
+using PeruStar.API.Artist.Interfaces.Internal;
+using PeruStar.API.Artwork.Domain.Repositories;
+using PeruStar.API.Artwork.Domain.Services;
+using PeruStar.API.Artwork.Domain.Services.Communication;
 using PeruStar.API.Shared.Domain.Repositories;
 
-namespace PeruStar.API.PeruStar.Services;
+namespace PeruStar.API.Artwork.Services;
 
-public class ArtworkService : IArtworkService
+public class ArtworkService : IArtworkService, IArtistFacade
 {
     
     private readonly IArtworkRepository _artworkRepository;
@@ -21,12 +21,12 @@ public class ArtworkService : IArtworkService
         _artistRepository = artistRepository;
     }
 
-    public async Task<IEnumerable<Artwork>> ListAsync()
+    public async Task<IEnumerable<Domain.Models.Artwork>> ListAsync()
     {
         return await _artworkRepository.ListAsync();
     }
 
-    public async Task<IEnumerable<Artwork>> ListByArtistIdAsync(long id)
+    public async Task<IEnumerable<Domain.Models.Artwork>> ListByArtistIdAsync(long id)
     {
         return await _artworkRepository.ListByArtistIdAsync(id);
     }
@@ -41,7 +41,7 @@ public class ArtworkService : IArtworkService
         return new ArtworkResponse(existingArtwork);
     }
     
-    public async Task<ArtworkResponse> SaveAsync(long artistId, Artwork artwork)
+    public async Task<ArtworkResponse> SaveAsync(long artistId, Domain.Models.Artwork artwork)
     {
         try
         {
@@ -62,7 +62,7 @@ public class ArtworkService : IArtworkService
         }
     }
 
-    public async Task<ArtworkResponse> UpdateAsync(long id, long artistId, Artwork artwork)
+    public async Task<ArtworkResponse> UpdateAsync(long id, long artistId, Domain.Models.Artwork artwork)
     {
         var existingArtist = await _artistRepository.FindById(artistId);
 
@@ -120,7 +120,7 @@ public class ArtworkService : IArtworkService
         return true;
     }
 
-    public async Task<IEnumerable<Artwork>> ListByHobbyistAsync(long hobbyistId)
+    public async Task<IEnumerable<Domain.Models.Artwork>> ListByHobbyistAsync(long hobbyistId)
     {
         throw new NotImplementedException(); // Todavia no se implementa
     }

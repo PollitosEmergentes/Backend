@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using PeruStar.API.PeruStar.Domain.Models;
+using PeruStar.API.Artwork.Domain.Services;
+using PeruStar.API.Artwork.Interfaces.Internal;
+using PeruStar.API.Artwork.Resources;
 using PeruStar.API.PeruStar.Domain.Services;
 using PeruStar.API.PeruStar.Resources;
 using PeruStar.API.Shared.Extensions;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace PeruStar.API.PeruStar.Controllers;
+namespace PeruStar.API.Artwork.Controllers;
 
 
 [ApiController]
@@ -15,13 +17,15 @@ namespace PeruStar.API.PeruStar.Controllers;
 [SwaggerTag("Create, Read, Update, Delete and Artworks")]
 public class ArtworksController : ControllerBase
 {
-    private readonly IArtworkService _artworkService;
+        private readonly IArtworkService _artworkService;
+        private readonly IArtworkFacade _artworkFacade;
         private readonly IMapper _mapper;
 
-        public ArtworksController(IArtworkService artworkService, IMapper mapper)
+        public ArtworksController(IArtworkService artworkService, IMapper mapper, IArtworkFacade artworkFacade)
         {
             _artworkService = artworkService;
             _mapper = mapper;
+            _artworkFacade = artworkFacade;
         }
 
 
@@ -41,8 +45,8 @@ public class ArtworksController : ControllerBase
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IEnumerable<ArtworkResource>> GetAllByArtistIdAsync(long artistId)
         {
-            var artworks = await _artworkService.ListByArtistIdAsync(artistId);
-            var resources = _mapper.Map<IEnumerable<Artwork>, IEnumerable<ArtworkResource>>(artworks);
+            var artworks = await _artworkFacade.ListByArtistIdAsync(artistId);
+            var resources = _mapper.Map<IEnumerable<Domain.Models.Artwork>, IEnumerable<ArtworkResource>>(artworks);
             return resources;
         }
 
@@ -63,10 +67,10 @@ public class ArtworksController : ControllerBase
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> GetByIdAsync(long artworkId, long artistId)
         {
-            var result = await _artworkService.FindByIdAndArtistIdAsync(artworkId, artistId);
+            var result = await _artworkFacade.FindByIdAndArtistIdAsync(artworkId, artistId);
             if (!result.Success)
                 return BadRequest(result.Message);
-            var artworkResource = _mapper.Map<Artwork, ArtworkResource>(result.Resource);
+            var artworkResource = _mapper.Map<Domain.Models.Artwork, ArtworkResource>(result.Resource);
             return Ok(artworkResource);
         }
 
@@ -90,12 +94,12 @@ public class ArtworksController : ControllerBase
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
 
-            var artwork = _mapper.Map<SaveArtworkResource, Artwork>(resource);
+            var artwork = _mapper.Map<SaveArtworkResource, Domain.Models.Artwork>(resource);
             var result = await _artworkService.SaveAsync(artistId, artwork);
 
             if (!result.Success)
                 return BadRequest(result.Message);
-            var artworkResource = _mapper.Map<Artwork, ArtworkResource>(result.Resource);
+            var artworkResource = _mapper.Map<Domain.Models.Artwork, ArtworkResource>(result.Resource);
             return Ok(artworkResource);
 
         }
@@ -120,13 +124,13 @@ public class ArtworksController : ControllerBase
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
 
-            var artwork = _mapper.Map<SaveArtworkResource, Artwork>(resource);
+            var artwork = _mapper.Map<SaveArtworkResource, Domain.Models.Artwork>(resource);
             var result = await _artworkService.UpdateAsync(artworkId, artistId, artwork);
 
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var artworkResource = _mapper.Map<Artwork, ArtworkResource>(result.Resource);
+            var artworkResource = _mapper.Map<Domain.Models.Artwork, ArtworkResource>(result.Resource);
             return Ok(artworkResource);
         }
 
@@ -150,7 +154,7 @@ public class ArtworksController : ControllerBase
             var result = await _artworkService.DeleteAsync(artworkId, artistId);
             if (!result.Success)
                 return BadRequest(result.Message);
-            var artworkResource = _mapper.Map<Artwork, ArtworkResource>(result.Resource);
+            var artworkResource = _mapper.Map<Domain.Models.Artwork, ArtworkResource>(result.Resource);
             return Ok(artworkResource);
         }
 }

@@ -7,7 +7,7 @@ public class Artist : Person
     public string? BrandName { get; set; }
     public string? Description { get; set; }
     public string? Phrase { get; set; }
-    public IList<Artwork> Artworks { get; set; } = new List<Artwork>();
+    public IList<Artwork.Domain.Models.Artwork> Artworks { get; set; } = new List<Artwork.Domain.Models.Artwork>();
     public IList<Event> Events { get; set; } = new List<Event>();
     public IList<Follower> Followers { get; set; } = new List<Follower>();
     public IList<FavoriteArtwork> FavoriteArtworks { get; set; } = new List<FavoriteArtwork>();

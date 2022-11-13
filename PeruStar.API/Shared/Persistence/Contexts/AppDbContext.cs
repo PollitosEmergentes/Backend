@@ -13,7 +13,7 @@ public class AppDbContext: DbContext
     }
     // Declare DbSet of the entity
     public DbSet<Artist.Domain.Models.Artist> Artists { get; set; } = null!;
-    public DbSet<Artwork> Artworks { get; set; } = null!;
+    public DbSet<Artwork.Domain.Models.Artwork> Artworks { get; set; } = null!;
     public DbSet<ClaimTicket> ClaimTickets { get; set; } = null!;
     public DbSet<EventAssistance> EventAssistances { get; set; } = null!;
     public DbSet<Event> Events { get; set; } = null!;
@@ -108,21 +108,21 @@ public class AppDbContext: DbContext
             .HasForeignKey(p=>p.ArtistId);
 
         // Artwork entity
-        builder.Entity<Artwork>().ToTable("Artworks");
-        builder.Entity<Artwork>().HasKey(p => p.ArtworkId);
-        builder.Entity<Artwork>().Property(p => p.ArtworkId).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<Artwork>().Property(p => p.ArtTitle).IsRequired().HasMaxLength(100);
-        builder.Entity<Artwork>().Property(p => p.ArtDescription).IsRequired().HasMaxLength(250);
-        builder.Entity<Artwork>().Property(p => p.ArtCost);
-        builder.Entity<Artwork>().Property(p => p.LinkInfo);
+        builder.Entity<Artwork.Domain.Models.Artwork>().ToTable("Artworks");
+        builder.Entity<Artwork.Domain.Models.Artwork>().HasKey(p => p.ArtworkId);
+        builder.Entity<Artwork.Domain.Models.Artwork>().Property(p => p.ArtworkId).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Artwork.Domain.Models.Artwork>().Property(p => p.ArtTitle).IsRequired().HasMaxLength(100);
+        builder.Entity<Artwork.Domain.Models.Artwork>().Property(p => p.ArtDescription).IsRequired().HasMaxLength(250);
+        builder.Entity<Artwork.Domain.Models.Artwork>().Property(p => p.ArtCost);
+        builder.Entity<Artwork.Domain.Models.Artwork>().Property(p => p.LinkInfo);
         // Relationships
         
-        builder.Entity<Artwork>()
+        builder.Entity<Artwork.Domain.Models.Artwork>()
             .HasOne(p => p.Artist)
             .WithMany(p => p.Artworks)
             .HasForeignKey(p => p.ArtistId);
         
-        builder.Entity<Artwork>()
+        builder.Entity<Artwork.Domain.Models.Artwork>()
             .HasMany(p=>p.FavoriteArtworks)
             .WithOne(p=>p.Artwork)
             .HasForeignKey(p=>p.ArtworkId);
