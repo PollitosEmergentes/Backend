@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\emanuel.ticona\\Documents\\Emergentes\\Backend\\PeruStar.API\\PeruStar.API.csproj": {}
+    "C:\\Users\\Usuario\\Documents\\UPC\\arqui\\backend\\PeruStar.API\\PeruStar.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\emanuel.ticona\\Documents\\Emergentes\\Backend\\PeruStar.API\\PeruStar.API.csproj": {
+    "C:\\Users\\Usuario\\Documents\\UPC\\arqui\\backend\\PeruStar.API\\PeruStar.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\emanuel.ticona\\Documents\\Emergentes\\Backend\\PeruStar.API\\PeruStar.API.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\Documents\\UPC\\arqui\\backend\\PeruStar.API\\PeruStar.API.csproj",
         "projectName": "PeruStar.API",
-        "projectPath": "C:\\Users\\emanuel.ticona\\Documents\\Emergentes\\Backend\\PeruStar.API\\PeruStar.API.csproj",
-        "packagesPath": "C:\\Users\\emanuel.ticona\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\emanuel.ticona\\Documents\\Emergentes\\Backend\\PeruStar.API\\obj\\",
+        "projectPath": "C:\\Users\\Usuario\\Documents\\UPC\\arqui\\backend\\PeruStar.API\\PeruStar.API.csproj",
+        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Usuario\\Documents\\UPC\\arqui\\backend\\PeruStar.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\emanuel.ticona\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -99,8 +99,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -112,7 +111,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

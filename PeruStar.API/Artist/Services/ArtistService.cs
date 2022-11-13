@@ -1,10 +1,9 @@
-﻿using PeruStar.API.PeruStar.Domain.Models;
-using PeruStar.API.PeruStar.Domain.Repositories;
-using PeruStar.API.PeruStar.Domain.Services;
-using PeruStar.API.PeruStar.Domain.Services.Communication;
+﻿using PeruStar.API.Artist.Domain.Repositories;
+using PeruStar.API.Artist.Domain.Services;
+using PeruStar.API.Artist.Domain.Services.Communication;
 using PeruStar.API.Shared.Domain.Repositories;
 
-namespace PeruStar.API.PeruStar.Services;
+namespace PeruStar.API.Artist.Services;
 
 public class ArtistService : IArtistService
 {
@@ -17,12 +16,12 @@ public class ArtistService : IArtistService
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<IEnumerable<Artist>> ListAsync()
+    public async Task<IEnumerable<Domain.Models.Artist>> ListAsync()
     {
         return await _artistRepository.ListAsync();
     }
 
-    public Task<IEnumerable<Artist>> ListByHobbyistIdAsync(int hobbyistId)
+    public Task<IEnumerable<Domain.Models.Artist>> ListByHobbyistIdAsync(int hobbyistId)
     {
         throw new NotImplementedException(); // Falta Folower
     }
@@ -32,7 +31,7 @@ public class ArtistService : IArtistService
         return new ArtistResponse(await _artistRepository.FindById(id));
     }
 
-    public async Task<ArtistResponse> SaveAsync(Artist artist)
+    public async Task<ArtistResponse> SaveAsync(Domain.Models.Artist artist)
     {
         try
         {
@@ -47,7 +46,7 @@ public class ArtistService : IArtistService
         }
     }
 
-    public async Task<ArtistResponse> UpdateAsync(long id, Artist artist)
+    public async Task<ArtistResponse> UpdateAsync(long id, Domain.Models.Artist artist)
     {
         var existingArtist = await _artistRepository.FindById(id);
 

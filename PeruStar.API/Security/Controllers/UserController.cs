@@ -1,5 +1,4 @@
-﻿
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PeruStar.API.Security.Authorization.Attributes;
 using PeruStar.API.Security.Domain.Models;
@@ -52,7 +51,7 @@ public class UserController: ControllerBase
         await _userService.RegisterAsync(request);
         return Ok(new { message = "User registered successfully" });
     }
-    
+    [Authorize]
     [HttpGet]
     [SwaggerOperation(
         Summary = "Get all users",
@@ -73,7 +72,7 @@ public class UserController: ControllerBase
         Description = "Get a user by id",
         OperationId = "GetById",
         Tags = new[] { "User" })]
-    public async Task<IActionResult> GetById(int id)
+    public async Task<IActionResult> GetById(long id)
     {
         var response = await _userService.FindByIdAsync(id);
         var resource = _mapper.Map<User, UserResource>(response);

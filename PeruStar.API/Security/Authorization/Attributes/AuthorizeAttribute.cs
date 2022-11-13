@@ -22,7 +22,7 @@ public class AuthorizeAttribute: Attribute, IAuthorizationFilter
         
         // Authorization process
         var user = (User)context.HttpContext.Items["User"]!;
-        if (user.Equals(null))
+        if (user == null)
             context.Result = new JsonResult(new { message = "Unauthorized" })
                 { StatusCode = StatusCodes.Status401Unauthorized };
     }

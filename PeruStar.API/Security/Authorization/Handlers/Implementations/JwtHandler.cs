@@ -1,13 +1,14 @@
-﻿using PeruStar.API.Security.Authorization.Handlers.Interfaces;
-using PeruStar.API.Security.Authorization.Settings;
-using PeruStar.API.Security.Domain.Models;
-
-namespace PeruStar.API.Security.Authorization.Handlers.Implementations;
-using System.IdentityModel.Tokens.Jwt;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using PeruStar.API.Security.Authorization.Handlers.Interfaces;
+using PeruStar.API.Security.Authorization.Settings;
+using PeruStar.API.Security.Domain.Models;
+
+
+namespace PeruStar.API.Security.Authorization.Handlers.Implementations;
 
 public class JwtHandler: IJwtHandler
 {
@@ -22,14 +23,14 @@ public class JwtHandler: IJwtHandler
     {
         Console.WriteLine($"Secret: {_appSettings.Secret}");
         var secret = _appSettings.Secret;
-        var key = Encoding.ASCII.GetBytes(secret!);
-        Console.WriteLine($"User Id: {user.Id.ToString()}");
+        var key = Encoding.ASCII.GetBytes(secret);
+        Console.WriteLine($"Manager Id: {user.Id.ToString()}");
         var TokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(new Claim[]
             {
                 new Claim(ClaimTypes.Sid, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Username!)
+                new Claim(ClaimTypes.Name, user.Username)
             }),
             Expires = DateTime.UtcNow.AddDays(7),
             SigningCredentials =

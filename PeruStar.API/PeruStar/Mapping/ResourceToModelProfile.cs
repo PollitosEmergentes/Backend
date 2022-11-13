@@ -7,9 +7,8 @@ namespace PeruStar.API.PeruStar.Mapping;
 public class ResourceToModelProfile: Profile
 {
     public ResourceToModelProfile()
-    {
-        //CreateMap<SaveRestaurantResource, Restaurant>();
-       CreateMap<SaveArtistResource, Artist>();
+    { 
+        
        CreateMap<SaveArtworkResource, Artwork>();
        CreateMap<SaveClaimTicketResource, ClaimTicket>();
        CreateMap<SaveEventResource, Event>();
@@ -17,5 +16,9 @@ public class ResourceToModelProfile: Profile
        CreateMap<SaveFavoriteArtworkResource, FavoriteArtwork>();
        CreateMap<SavePersonResource, PersonResource>();
        CreateMap<SaveSpecialtyResource, Specialty>();
+       CreateMap<SaveHobbyistResource, HobbyistResource>();
+       CreateMap<SaveFollowerResource, FollowerResource>();
+       CreateMap<SaveInterestResource, Interest>();
+
     }
 }

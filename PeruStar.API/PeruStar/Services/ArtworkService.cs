@@ -1,4 +1,5 @@
-﻿using PeruStar.API.PeruStar.Domain.Models;
+﻿using PeruStar.API.Artist.Domain.Repositories;
+using PeruStar.API.PeruStar.Domain.Models;
 using PeruStar.API.PeruStar.Domain.Repositories;
 using PeruStar.API.PeruStar.Domain.Services;
 using PeruStar.API.PeruStar.Domain.Services.Communication;
