@@ -4,7 +4,7 @@ public class Interest
 {
     public long Id { get; set; }
     public long HobbyistId { get; set; }
-    public Hobbyist? Hobbyist { get; set; }
+    public Hobbyist.Domain.Models.Hobbyist? Hobbyist { get; set; }
     public long SpecialtyId { get; set; }
     public Specialty? Specialty { get; set; }
 }

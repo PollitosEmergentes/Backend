@@ -9,7 +9,7 @@ public class ClaimTicket
     public string? ClaimDescription { get; set; }
     public DateTime IncidentDate { get; set; }
     public long HobbyistId { get; set; }
-    public Hobbyist? Hobbyist { get; set; }
+    public Hobbyist.Domain.Models.Hobbyist? Hobbyist { get; set; }
     [NotMapped]
     public Person? ReportedPerson { get; set; }
     [NotMapped]

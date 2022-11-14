@@ -1,10 +1,12 @@
 ﻿using PeruStar.API.PeruStar.Domain.Models;
-using PeruStar.API.PeruStar.Domain.Repositories;
+using PeruStar.API.Hobbyist.Domain.Repositories;
+using PeruStar.API.Hobbyist.Domain.Services;
+using PeruStar.API.Hobbyist.Domain.Services.Communication;
 using PeruStar.API.PeruStar.Domain.Services;
 using PeruStar.API.PeruStar.Domain.Services.Communication;
 using PeruStar.API.Shared.Domain.Repositories;
 
-namespace PeruStar.API.PeruStar.Services;
+namespace PeruStar.API.Hobbyist.Services;
 
 public class HobbyistService : IHobbyistService
 {
@@ -17,7 +19,7 @@ public class HobbyistService : IHobbyistService
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<IEnumerable<Hobbyist>> ListAsync()
+    public async Task<IEnumerable<Domain.Models.Hobbyist>> ListAsync()
     {
         return await _hobbyistRepository.ListAsync();
     }
@@ -27,7 +29,7 @@ public class HobbyistService : IHobbyistService
         return new HobbyistResponse(await _hobbyistRepository.FindById(id));
     }
 
-    public async Task<HobbyistResponse> SaveAsync(Hobbyist hobbyist)
+    public async Task<HobbyistResponse> SaveAsync(Domain.Models.Hobbyist hobbyist)
     {
         try
         {
@@ -42,7 +44,7 @@ public class HobbyistService : IHobbyistService
         }
     }
 
-    public async Task<HobbyistResponse> UpdateAsync(long id, Hobbyist hobbyist)
+    public async Task<HobbyistResponse> UpdateAsync(long id, Domain.Models.Hobbyist hobbyist)
     {
         var existingHobbyist = await _hobbyistRepository.FindById(id);
 

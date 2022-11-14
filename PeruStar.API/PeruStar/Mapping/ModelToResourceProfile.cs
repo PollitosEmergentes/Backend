@@ -16,7 +16,7 @@ public class ModelToResourceProfile : Profile
         CreateMap<FavoriteArtwork, FavoriteArtworkResource>();
         CreateMap<Person, PersonResource>();
         CreateMap<Specialty, SpecialtyResource>();
-        CreateMap<Hobbyist, HobbyistResource>();
+        CreateMap<Hobbyist.Domain.Models.Hobbyist, HobbyistResource>();
         CreateMap<Follower, FollowerResource>();
         CreateMap<Interest, InterestResource>();
     }

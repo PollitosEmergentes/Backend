@@ -20,7 +20,10 @@ public class AppDbContext: DbContext
     public DbSet<FavoriteArtwork> FavoriteArtworks { get; set; } = null!;
     public DbSet<User> Users { get; set; } = null!;
     public DbSet<Specialty> Specialties { get; set; } = null!;
-    public DbSet<Hobbyist> Hobbyists { get; set; } = null!;
+    public DbSet<Hobbyist.Domain.Models.Hobbyist> Hobbyists { get; set; } = null!;
+
+    public DbSet<Follower> Followers { get; set; } = null!;
+    public DbSet<Interest> Interests { get; set; } = null!;
 
     public DbSet<Follower> Followers { get; set; } = null!;
     public DbSet<Interest> Interests { get; set; } = null!;
@@ -283,32 +286,57 @@ public class AppDbContext: DbContext
         // Relationships
         
         // Hobbyist entity
+<<<<<<< HEAD
         builder.Entity<Hobbyist>().ToTable("Hobbyists");
         builder.Entity<Hobbyist>().Property(h => h.Firstname).IsRequired().HasMaxLength(50);
         builder.Entity<Hobbyist>().Property(h => h.Lastname).IsRequired().HasMaxLength(50);
  
         
         builder.Entity<Hobbyist>()
+=======
+        builder.Entity<Hobbyist.Domain.Models.Hobbyist>().ToTable("Hobbyists");
+        builder.Entity<Hobbyist.Domain.Models.Hobbyist>().Property(h => h.Firstname).IsRequired().HasMaxLength(50);
+        builder.Entity<Hobbyist.Domain.Models.Hobbyist>().Property(h => h.Lastname).IsRequired().HasMaxLength(50);
+ 
+        
+        builder.Entity<Hobbyist.Domain.Models.Hobbyist>()
+>>>>>>> f1137f8506a61365eec49d04a3210200e8b14751
             .HasMany(h => h.Interests)
             .WithOne(h => h.Hobbyist)
             .HasForeignKey(h => h.HobbyistId);
         
+<<<<<<< HEAD
         builder.Entity<Hobbyist>()
+=======
+        builder.Entity<Hobbyist.Domain.Models.Hobbyist>()
+>>>>>>> f1137f8506a61365eec49d04a3210200e8b14751
             .HasMany(h=>h.FavoriteArtworks)
             .WithOne(h=>h.Hobbyist)
             .HasForeignKey(h=>h.HobbyistId);
         
+<<<<<<< HEAD
         builder.Entity<Hobbyist>()
+=======
+        builder.Entity<Hobbyist.Domain.Models.Hobbyist>()
+>>>>>>> f1137f8506a61365eec49d04a3210200e8b14751
             .HasMany(h=>h.Followers)
             .WithOne(h=>h.Hobbyist)
             .HasForeignKey(h=>h.HobbyistId);
         
+<<<<<<< HEAD
         builder.Entity<Hobbyist>()
+=======
+        builder.Entity<Hobbyist.Domain.Models.Hobbyist>()
+>>>>>>> f1137f8506a61365eec49d04a3210200e8b14751
             .HasMany(h=>h.Assistance)
             .WithOne(h=>h.Hobbyist)
             .HasForeignKey(h=>h.HobbyistId);
         
+<<<<<<< HEAD
         builder.Entity<Hobbyist>()
+=======
+        builder.Entity<Hobbyist.Domain.Models.Hobbyist>()
+>>>>>>> f1137f8506a61365eec49d04a3210200e8b14751
             .HasMany(h=>h.ClaimTickets)
             .WithOne(h=>h.Hobbyist)
             .HasForeignKey(h=>h.HobbyistId);

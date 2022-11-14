@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using PeruStar.API.Hobbyist.Domain.Services;
 using PeruStar.API.PeruStar.Domain.Models;
 using PeruStar.API.PeruStar.Domain.Services;
 using PeruStar.API.PeruStar.Resources;
 using PeruStar.API.Shared.Extensions;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace PeruStar.API.Artwork.Controllers.Controllers;
+namespace PeruStar.API.Hobbyist.Controllers.Controllers;
+
 
 [ApiController]
 [Route("api/[controller]")]
@@ -40,7 +42,7 @@ public class HobbyistController : ControllerBase
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IEnumerable<HobbyistResource>> GetAllAsync() {
             var hobbyist = await _hobbyistService.ListAsync();
-            var resources = _mapper.Map<IEnumerable<Hobbyist>, IEnumerable<HobbyistResource>>(hobbyist);
+            var resources = _mapper.Map<IEnumerable<Hobbyist.Domain.Models.Hobbyist>, IEnumerable<HobbyistResource>>(hobbyist);
             return resources;
         }
 
@@ -63,7 +65,7 @@ public class HobbyistController : ControllerBase
             var result = await _hobbyistService.GetByIdAsync(hobbyistId);
             if (!result.Success)
                 return BadRequest(result.Message);
-            var hobbyistResource = _mapper.Map<Hobbyist, HobbyistResource>(result.Resource);
+            var hobbyistResource = _mapper.Map<Hobbyist.Domain.Models.Hobbyist, HobbyistResource>(result.Resource);
             return Ok(hobbyistResource);
         }
 
@@ -87,13 +89,13 @@ public class HobbyistController : ControllerBase
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
 
-            var hobbyist = _mapper.Map<SaveHobbyistResource, Hobbyist>(resource);
+            var hobbyist = _mapper.Map<SaveHobbyistResource, Hobbyist.Domain.Models.Hobbyist>(resource);
             var result = await _hobbyistService.SaveAsync(hobbyist);
 
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var hobbyistResource = _mapper.Map<Hobbyist, HobbyistResource>(result.Resource);
+            var hobbyistResource = _mapper.Map<Hobbyist.Domain.Models.Hobbyist, HobbyistResource>(result.Resource);
             return Ok(hobbyistResource);
         
         }
@@ -118,13 +120,13 @@ public class HobbyistController : ControllerBase
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
            
-            var hobbyist = _mapper.Map<SaveHobbyistResource, Hobbyist>(resource);
+            var hobbyist = _mapper.Map<SaveHobbyistResource, Hobbyist.Domain.Models.Hobbyist>(resource);
             var result = await _hobbyistService.UpdateAsync(hobbyistId, hobbyist);
 
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var hobbyistResource = _mapper.Map<Hobbyist, HobbyistResource>(result.Resource);
+            var hobbyistResource = _mapper.Map<Hobbyist.Domain.Models.Hobbyist, HobbyistResource>(result.Resource);
             return Ok(hobbyistResource);
         }
 
@@ -147,7 +149,7 @@ public class HobbyistController : ControllerBase
             var result = await _hobbyistService.DeleteAsync(hobbyistId);
             if (!result.Success)
                 return BadRequest(result.Message);
-            var hobbyistResource = _mapper.Map<Hobbyist, HobbyistResource>(result.Resource);
+            var hobbyistResource = _mapper.Map<Domain.Models.Hobbyist, HobbyistResource>(result.Resource);
             return Ok(hobbyistResource);
         }
     

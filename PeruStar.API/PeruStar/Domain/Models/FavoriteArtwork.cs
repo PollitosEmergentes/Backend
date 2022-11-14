@@ -3,7 +3,7 @@
 public class FavoriteArtwork
 {
     public int Id { get; set; }
-    public Hobbyist? Hobbyist{ get; set; }
+    public Hobbyist.Domain.Models.Hobbyist? Hobbyist{ get; set; }
     public long HobbyistId { get; set; }
     public Artwork.Domain.Models.Artwork? Artwork { get; set; }
     public long ArtworkId { get; set; }
