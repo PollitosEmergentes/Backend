@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\W10\\.nuget\\packages\\": {}
+    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\W10\\Desktop\\Integrando\\Backend\\PeruStar.API\\PeruStar.API.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\Documents\\UPC\\arqui\\backend\\PeruStar.API\\PeruStar.API.csproj",
       "projectName": "PeruStar.API",
-      "projectPath": "C:\\Users\\W10\\Desktop\\Integrando\\Backend\\PeruStar.API\\PeruStar.API.csproj",
-      "packagesPath": "C:\\Users\\W10\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\W10\\Desktop\\Integrando\\Backend\\PeruStar.API\\obj\\",
+      "projectPath": "C:\\Users\\Usuario\\Documents\\UPC\\arqui\\backend\\PeruStar.API\\PeruStar.API.csproj",
+      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Usuario\\Documents\\UPC\\arqui\\backend\\PeruStar.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\W10\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -55,7 +55,19 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
+=======
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+>>>>>>> 30337a43d9f8cde645027ee481f14c7f7dda743d
       }
     }
   },
