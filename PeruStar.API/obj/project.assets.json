@@ -7005,11 +7005,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\O.T\\Desktop\\Pollitos-Arqui\\Backend\\PeruStar.API\\PeruStar.API.csproj",
+      "projectUniqueName": "C:\\Users\\O.T\\Desktop\\back peru\\Backend\\PeruStar.API\\PeruStar.API.csproj",
       "projectName": "PeruStar.API",
-      "projectPath": "C:\\Users\\O.T\\Desktop\\Pollitos-Arqui\\Backend\\PeruStar.API\\PeruStar.API.csproj",
+      "projectPath": "C:\\Users\\O.T\\Desktop\\back peru\\Backend\\PeruStar.API\\PeruStar.API.csproj",
       "packagesPath": "C:\\Users\\O.T\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\O.T\\Desktop\\Pollitos-Arqui\\Backend\\PeruStar.API\\obj\\",
+      "outputPath": "C:\\Users\\O.T\\Desktop\\back peru\\Backend\\PeruStar.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

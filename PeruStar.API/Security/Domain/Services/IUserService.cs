@@ -7,8 +7,8 @@ public interface IUserService
 {
     Task<AuthenticateResponse> AuthenticateAsync(AuthenticateRequest request);
     Task<IEnumerable<User>> ListAsync();
-    Task<User> FindByIdAsync(int id);
+    Task<User> FindByIdAsync(long id);
     Task RegisterAsync(RegisterRequest request);
-    Task UpdateAsync(int id, UpdateRequest request);
-    Task DeleteAsync(int id);
+    Task UpdateAsync(long id, UpdateRequest request);
+    Task DeleteAsync(long id);
 }
