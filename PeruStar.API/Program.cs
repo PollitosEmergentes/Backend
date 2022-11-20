@@ -46,7 +46,7 @@ builder.Services.AddDbContext<AppDbContext>(
 
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
-// OpenAPI Configuration
+// OpenAPI Configuration add
 
 builder.Services.AddSwaggerGen(options =>
 {
