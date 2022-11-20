@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Usuario\\Documents\\UPC\\arqui\\backend\\PeruStar.API\\PeruStar.API.csproj": {}
+    "C:\\Users\\Usuario\\Documents\\UPC\\arqui\\Backend\\PeruStar.API\\PeruStar.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Usuario\\Documents\\UPC\\arqui\\backend\\PeruStar.API\\PeruStar.API.csproj": {
+    "C:\\Users\\Usuario\\Documents\\UPC\\arqui\\Backend\\PeruStar.API\\PeruStar.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\Documents\\UPC\\arqui\\backend\\PeruStar.API\\PeruStar.API.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\Documents\\UPC\\arqui\\Backend\\PeruStar.API\\PeruStar.API.csproj",
         "projectName": "PeruStar.API",
-        "projectPath": "C:\\Users\\Usuario\\Documents\\UPC\\arqui\\backend\\PeruStar.API\\PeruStar.API.csproj",
+        "projectPath": "C:\\Users\\Usuario\\Documents\\UPC\\arqui\\Backend\\PeruStar.API\\PeruStar.API.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\Documents\\UPC\\arqui\\backend\\PeruStar.API\\obj\\",
+        "outputPath": "C:\\Users\\Usuario\\Documents\\UPC\\arqui\\Backend\\PeruStar.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,60 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational.Design": {
+              "target": "Package",
+              "version": "[1.1.6, )"
+            },
+            "MySql.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            },
+            "Swashbuckle.AspNetCore.Annotations": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            },
+            "Swashbuckle.AspNetCore.Swagger": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.24.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -49,9 +103,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-<<<<<<< HEAD
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
-=======
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -61,7 +112,6 @@
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
->>>>>>> 30337a43d9f8cde645027ee481f14c7f7dda743d
         }
       }
     }

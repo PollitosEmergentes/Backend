@@ -1,4 +1,5 @@
-﻿namespace PeruStar.API.PeruStar.Domain.Models;
+﻿using PeruStar.API.PeruStar.Domain.Models;
+namespace PeruStar.API.Specialty.Domain.Models;
 
 public class Specialty
 {

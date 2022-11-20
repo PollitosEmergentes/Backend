@@ -190,3 +190,13 @@ C:\Users\Sho Lee\Documents\8vo ciclo UPC\Emergentes\Sebas2\Backend\PeruStar.API\
 C:\Users\Sho Lee\Documents\8vo ciclo UPC\Emergentes\Sebas2\Backend\PeruStar.API\obj\Debug\net6.0\PeruStar.API.pdb
 C:\Users\Sho Lee\Documents\8vo ciclo UPC\Emergentes\Sebas2\Backend\PeruStar.API\obj\Debug\net6.0\PeruStar.API.genruntimeconfig.cache
 C:\Users\Sho Lee\Documents\8vo ciclo UPC\Emergentes\Sebas2\Backend\PeruStar.API\obj\Debug\net6.0\ref\PeruStar.API.dll
+C:\Users\Usuario\Documents\UPC\arqui\Backend\PeruStar.API\obj\Debug\net6.0\PeruStar.API.csproj.AssemblyReference.cache
+C:\Users\Usuario\Documents\UPC\arqui\Backend\PeruStar.API\obj\Debug\net6.0\PeruStar.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Usuario\Documents\UPC\arqui\Backend\PeruStar.API\obj\Debug\net6.0\PeruStar.API.AssemblyInfoInputs.cache
+C:\Users\Usuario\Documents\UPC\arqui\Backend\PeruStar.API\obj\Debug\net6.0\PeruStar.API.AssemblyInfo.cs
+C:\Users\Usuario\Documents\UPC\arqui\Backend\PeruStar.API\obj\Debug\net6.0\PeruStar.API.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Documents\UPC\arqui\Backend\PeruStar.API\obj\Debug\net6.0\PeruStar.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Usuario\Documents\UPC\arqui\Backend\PeruStar.API\obj\Debug\net6.0\PeruStar.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Usuario\Documents\UPC\arqui\Backend\PeruStar.API\obj\Debug\net6.0\PeruStar.API.dll
+C:\Users\Usuario\Documents\UPC\arqui\Backend\PeruStar.API\obj\Debug\net6.0\refint\PeruStar.API.dll
+C:\Users\Usuario\Documents\UPC\arqui\Backend\PeruStar.API\obj\Debug\net6.0\PeruStar.API.pdb

@@ -6,5 +6,5 @@ public class Interest
     public long HobbyistId { get; set; }
     public Hobbyist.Domain.Models.Hobbyist? Hobbyist { get; set; }
     public long SpecialtyId { get; set; }
-    public Specialty? Specialty { get; set; }
+    public Specialty.Domain.Models.Specialty? Specialty { get; set; }
 }

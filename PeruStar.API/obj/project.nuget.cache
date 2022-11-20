@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1ondn8H0NjXbdZRuox0ylD60b47mZs5n7xNsxg4oBr+WXbzUmPix7ROaAqdvj14mlXuxgXc62wHmDjJJIoiVvA==",
+  "dgSpecHash": "Xt6tOe/10pVUwG/6EKnW3hWvl0Pg8tEPY1CFKrYEH0GXNg3JlGUhTsixoOquy8GdHgK1KuJCgJHKIG2ClwgeiA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Usuario\\Documents\\UPC\\arqui\\backend\\PeruStar.API\\PeruStar.API.csproj",
+  "projectFilePath": "C:\\Users\\Usuario\\Documents\\UPC\\arqui\\Backend\\PeruStar.API\\PeruStar.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Usuario\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

@@ -1,93 +1,76 @@
-﻿using AutoMapper;
-using PeruStar.API.PeruStar.Domain.Models;
-using PeruStar.API.PeruStar.Domain.Repositories;
-using PeruStar.API.PeruStar.Domain.Services;
-using PeruStar.API.PeruStar.Domain.Services.Communication;
+﻿using PeruStar.API.Specialty.Domain.Repositories;
+using PeruStar.API.Specialty.Domain.Services;
+using PeruStar.API.Specialty.Domain.Services.Communication;
 using PeruStar.API.Shared.Domain.Repositories;
 
-namespace PeruStar.API.PeruStar.Services
+namespace PeruStar.API.Specialty.Services;
+public class SpecialtyService : ISpecialtyService
 {
-    public class SpecialtyService : ISpecialtyService 
+    private readonly ISpecialtyRepository _specialtyRepository;
+    private readonly IUnitOfWork _unitOfWork;
+
+    public SpecialtyService(ISpecialtyRepository specialtyRepository, IUnitOfWork unitOfWork)
     {
-        private readonly ISpecialtyRepository _specialtyRepository;
-        private readonly IUnitOfWork _unitOfWork;
+        _specialtyRepository = specialtyRepository;
+        _unitOfWork = unitOfWork;
+    }
 
-        public SpecialtyService(ISpecialtyRepository specialtyRepository, IUnitOfWork unitOfWork)
+    public async Task<SpecialtyResponse> SaveAsync(Domain.Models.Specialty specialty)
+    {
+        try
         {
-            _specialtyRepository = specialtyRepository;
-            _unitOfWork = unitOfWork;
+            await _specialtyRepository.AddAsync(specialty);
+            await _unitOfWork.CompleteAsync();
+
+            return new SpecialtyResponse(specialty);
         }
-
-        public async Task<IEnumerable<Specialty>> ListAsync()
+        catch (Exception ex)
         {
-            return await _specialtyRepository.ListAsync();
+            return new SpecialtyResponse($"An error occurred when saving the specialty: {ex.Message}");
         }
+    }
 
-        public async Task<SpecialtyResponse> GetByIdAsync(long id)
+    public async Task<SpecialtyResponse> UpdateAsync(long id, Domain.Models.Specialty specialty)
+    {
+        var existingSpecialty = await _specialtyRepository.FindById(id);
+
+        if (existingSpecialty.Equals(null))
+            return new SpecialtyResponse("Specialty not found.");
+
+        existingSpecialty.Name = specialty.Name;
+
+        try
         {
-            var existingSpecialty = await _specialtyRepository.FindById(id);
-
-            if (existingSpecialty.Equals(null))
-                return new SpecialtyResponse("Specialty not found.");
+            _specialtyRepository.Update(existingSpecialty);
+            await _unitOfWork.CompleteAsync();
 
             return new SpecialtyResponse(existingSpecialty);
         }
-
-        public async Task<SpecialtyResponse> SaveAsync(Specialty specialty)
+        catch (Exception ex)
         {
-            try
-            {
-                await _specialtyRepository.AddAsync(specialty);
-                await _unitOfWork.CompleteAsync();
-
-                return new SpecialtyResponse(specialty);
-            }
-            catch (Exception ex)
-            {
-                return new SpecialtyResponse($"An error occurred when saving the specialty: {ex.Message}");
-            }
+            return new SpecialtyResponse($"An error occurred when updating the specialty: {ex.Message}");
         }
+    }
 
-        public async Task<SpecialtyResponse> UpdateAsync(long id, Specialty specialty)
+    public async Task<SpecialtyResponse> DeleteAsync(long id)
+    {
+        var existingSpecialty = await _specialtyRepository.FindById(id);
+
+        if (existingSpecialty.Equals(null))
+            return new SpecialtyResponse("Specialty not found.");
+
+        try
         {
-            var existingSpecialty = await _specialtyRepository.FindById(id);
+            _specialtyRepository.Remove(existingSpecialty);
+            await _unitOfWork.CompleteAsync();
 
-            if (existingSpecialty.Equals(null))
-                return new SpecialtyResponse("Specialty not found.");
-
-            existingSpecialty.Name = specialty.Name;
-
-            try
-            {
-                _specialtyRepository.Update(existingSpecialty);
-                await _unitOfWork.CompleteAsync();
-
-                return new SpecialtyResponse(existingSpecialty);
-            }
-            catch (Exception ex)
-            {
-                return new SpecialtyResponse($"An error occurred when updating the specialty: {ex.Message}");
-            }
+            return new SpecialtyResponse(existingSpecialty);
         }
-
-        public async Task<SpecialtyResponse> DeleteAsync(long id)
+        catch (Exception ex)
         {
-            var existingSpecialty = await _specialtyRepository.FindById(id);
-
-            if (existingSpecialty.Equals(null))
-                return new SpecialtyResponse("Specialty not found.");
-
-            try
-            {
-                _specialtyRepository.Remove(existingSpecialty);
-                await _unitOfWork.CompleteAsync();
-
-                return new SpecialtyResponse(existingSpecialty);
-            }
-            catch (Exception ex)
-            {
-                return new SpecialtyResponse($"An error occurred when deleting the specialty: {ex.Message}");
-            }
+            return new SpecialtyResponse($"An error occurred when deleting the specialty: {ex.Message}");
         }
     }
 }
+
+

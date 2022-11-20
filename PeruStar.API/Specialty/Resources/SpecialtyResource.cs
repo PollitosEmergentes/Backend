@@ -1,8 +1,8 @@
-﻿namespace PeruStar.API.PeruStar.Resources
+﻿namespace PeruStar.API.Specialty.Resources;
+public class SpecialtyResource
 {
-    public class SpecialtyResource
-    {
-        public long SpecialtyId { get; set; }
-        public string? Name { get; set; }
-    }
+    public long SpecialtyId { get; set; }
+    public string? Name { get; set; }
 }
+
+

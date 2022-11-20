@@ -19,7 +19,7 @@ public class AppDbContext: DbContext
     public DbSet<Event> Events { get; set; } = null!;
     public DbSet<FavoriteArtwork> FavoriteArtworks { get; set; } = null!;
     public DbSet<User> Users { get; set; } = null!;
-    public DbSet<Specialty> Specialties { get; set; } = null!;
+    public DbSet<Specialty.Domain.Models.Specialty> Specialties { get; set; } = null!;
     public DbSet<Hobbyist.Domain.Models.Hobbyist> Hobbyists { get; set; } = null!;
 
     public DbSet<Follower> Followers { get; set; } = null!;
@@ -247,21 +247,21 @@ public class AppDbContext: DbContext
         builder.Entity<User>().Property(u => u.PasswordHash).IsRequired();
         
         // Hobbyist entity
-
+        
         //Specialty Entity
-        builder.Entity<Specialty>().ToTable("Specialties");
-        builder.Entity<Specialty>().HasKey(s => s.SpecialtyId);
-        builder.Entity<Specialty>().Property(s => s.SpecialtyId).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<Specialty>().Property(s => s.Name).IsRequired().HasMaxLength(50);
+        builder.Entity<Specialty.Domain.Models.Specialty>().ToTable("Specialties");
+        builder.Entity<Specialty.Domain.Models.Specialty>().HasKey(s => s.SpecialtyId);
+        builder.Entity<Specialty.Domain.Models.Specialty>().Property(s => s.SpecialtyId).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Specialty.Domain.Models.Specialty>().Property(s => s.Name).IsRequired().HasMaxLength(50);
         
         //Relationships
         
-        builder.Entity<Specialty>()
+        builder.Entity<Specialty.Domain.Models.Specialty>()
             .HasMany(s => s.Artists)
             .WithOne(s => s.Specialty)
             .HasForeignKey(s => s.SpecialtyId);
         
-        builder.Entity<Specialty>()
+        builder.Entity<Specialty.Domain.Models.Specialty>()
             .HasMany(s=>s.Interests)
             .WithOne(s=>s.Specialty)
             .HasForeignKey(s=>s.SpecialtyId);

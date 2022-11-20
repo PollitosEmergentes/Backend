@@ -13,7 +13,7 @@ public class Artist : Person
     public IList<FavoriteArtwork> FavoriteArtworks { get; set; } = new List<FavoriteArtwork>();
     public IList<EventAssistance> EventAssistances { get; set; } = new List<EventAssistance>();
     public IList<ClaimTicket> ClaimTickets { get; set; } = new List<ClaimTicket>();
-    public Specialty? Specialty { get; set; }
+    public Specialty.Domain.Models.Specialty? Specialty { get; set; }
     public IList<string> SocialMediaLink { get; set; } = new List<string>();
     public long SpecialtyId { get; set; }
 }

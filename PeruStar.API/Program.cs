@@ -28,6 +28,10 @@ using PeruStar.API.Security.Services;
 using PeruStar.API.Shared.Domain.Repositories;
 using PeruStar.API.Shared.Persistence.Contexts;
 using PeruStar.API.Shared.Persistence.Repositories;
+using PeruStar.API.Specialty.Domain.Repositories;
+using PeruStar.API.Specialty.Domain.Services;
+using PeruStar.API.Specialty.Persistence.Repositories;
+using PeruStar.API.Specialty.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 //Sebas estuvo aqui
@@ -141,7 +145,9 @@ builder.Services.AddAutoMapper(
     typeof(PeruStar.API.Artist.Mapping.ModelToResourceProfile),
     typeof(PeruStar.API.Artist.Mapping.ResourceToModelProfile),
     typeof(PeruStar.API.Artwork.Mapping.ModelToResourceProfile),
-    typeof(PeruStar.API.Artwork.Mapping.ResourceToModelProfile)
+    typeof(PeruStar.API.Artwork.Mapping.ResourceToModelProfile),
+    typeof(PeruStar.API.Specialty.Mapping.ModelToResourceProfile),
+    typeof(PeruStar.API.Specialty.Mapping.ResourceToModelProfile)
     );
 
 var app = builder.Build();
