@@ -6,7 +6,7 @@ using PeruStar.API.PeruStar.Resources;
 using PeruStar.API.Shared.Extensions;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace PeruStar.API.Hobbyist.Controllers.Controllers;
+namespace PeruStar.API.Hobbyist.Interfaces.Rest.Controllers;
 
 [Route("api/hobbyists/{hobbyistId}/claimTickets")]
 [Produces("application/json")]

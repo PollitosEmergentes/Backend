@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PeruStar.API.Hobbyist.Domain.Services;
+using PeruStar.API.Hobbyist.Interfaces.Internal;
 using PeruStar.API.PeruStar.Domain.Models;
 using PeruStar.API.PeruStar.Domain.Services;
 using PeruStar.API.PeruStar.Resources;
 using PeruStar.API.Shared.Extensions;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace PeruStar.API.Hobbyist.Controllers.Controllers;
+namespace PeruStar.API.Hobbyist.Interfaces.Rest.Controllers;
 
 
 [ApiController]
@@ -17,11 +18,13 @@ namespace PeruStar.API.Hobbyist.Controllers.Controllers;
 public class HobbyistController : ControllerBase
 {
     private readonly IHobbyistService _hobbyistService;
-        private readonly IMapper _mapper;
+    private readonly IHobbyistFacade _hobbyistFacade;
+    private readonly IMapper _mapper;
 
-        public HobbyistController(IHobbyistService hobbyistService, IMapper mapper)
+        public HobbyistController(IHobbyistService hobbyistService, IMapper mapper, IHobbyistFacade hobbyistFacade)
         {
             _hobbyistService = hobbyistService;
+            _hobbyistFacade = hobbyistFacade;
             _mapper = mapper;
         }
 
@@ -41,7 +44,7 @@ public class HobbyistController : ControllerBase
         [ProducesResponseType(typeof(IEnumerable<HobbyistResource>), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IEnumerable<HobbyistResource>> GetAllAsync() {
-            var hobbyist = await _hobbyistService.ListAsync();
+            var hobbyist = await _hobbyistFacade.ListAsync();
             var resources = _mapper.Map<IEnumerable<Hobbyist.Domain.Models.Hobbyist>, IEnumerable<HobbyistResource>>(hobbyist);
             return resources;
         }
@@ -62,7 +65,7 @@ public class HobbyistController : ControllerBase
         [ProducesResponseType(typeof(HobbyistResource), 200)]
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> GetByIdAsync(long hobbyistId) {
-            var result = await _hobbyistService.GetByIdAsync(hobbyistId);
+            var result = await _hobbyistFacade.GetByIdAsync(hobbyistId);
             if (!result.Success)
                 return BadRequest(result.Message);
             var hobbyistResource = _mapper.Map<Hobbyist.Domain.Models.Hobbyist, HobbyistResource>(result.Resource);

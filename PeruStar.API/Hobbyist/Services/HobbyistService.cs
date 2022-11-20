@@ -19,16 +19,6 @@ public class HobbyistService : IHobbyistService
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<IEnumerable<Domain.Models.Hobbyist>> ListAsync()
-    {
-        return await _hobbyistRepository.ListAsync();
-    }
-
-    public async Task<HobbyistResponse> GetByIdAsync(long id)
-    {
-        return new HobbyistResponse(await _hobbyistRepository.FindById(id));
-    }
-
     public async Task<HobbyistResponse> SaveAsync(Domain.Models.Hobbyist hobbyist)
     {
         try
