@@ -1,10 +1,10 @@
-﻿using PeruStar.API.PeruStar.Domain.Models;
-using PeruStar.API.PeruStar.Domain.Repositories;
-using PeruStar.API.PeruStar.Domain.Services;
-using PeruStar.API.PeruStar.Domain.Services.Communication;
+﻿using PeruStar.API.Event.Domain.Models;
+using PeruStar.API.Event.Domain.Repositories;
+using PeruStar.API.Event.Domain.Services;
+using PeruStar.API.Event.Domain.Services.Communication;
 using PeruStar.API.Shared.Domain.Repositories;
 
-namespace PeruStar.API.PeruStar.Services;
+namespace PeruStar.API.Event.Services;
 
 public class EventAssistanceService: IEventAssistanceService
 {

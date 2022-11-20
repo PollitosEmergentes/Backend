@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PeruStar.API.PeruStar.Domain.Models;
-using PeruStar.API.PeruStar.Domain.Models.Status;
-using PeruStar.API.PeruStar.Domain.Repositories;
+using PeruStar.API.Event.Domain.Models.Status;
+using PeruStar.API.Event.Domain.Repositories;
 using PeruStar.API.Shared.Persistence.Contexts;
 using PeruStar.API.Shared.Persistence.Repositories;
 
-namespace PeruStar.API.PeruStar.Persistence.Repositories;
+namespace PeruStar.API.Event.Persistence.Repositories;
 
 public class EventRepository: BaseRepository, IEventRepository
 {
@@ -13,12 +12,12 @@ public class EventRepository: BaseRepository, IEventRepository
     {
     }
 
-    public async Task<IEnumerable<Event>> ListAsync()
+    public async Task<IEnumerable<Domain.Models.Event>> ListAsync()
     {
         return await _context.Events.ToListAsync();
     }
 
-    public async Task<IEnumerable<Event>> ListByArtistIdAsync(long artistId)
+    public async Task<IEnumerable<Domain.Models.Event>> ListByArtistIdAsync(long artistId)
     {
         return await _context.Events
             .Where(p => p.ArtistId == artistId)
@@ -26,7 +25,7 @@ public class EventRepository: BaseRepository, IEventRepository
             .ToListAsync();
     }
 
-    public async Task<IEnumerable<Event>> ListByEventTypeAsync(ETypeOfEvent typeOfEvent)
+    public async Task<IEnumerable<Domain.Models.Event>> ListByEventTypeAsync(ETypeOfEvent typeOfEvent)
     {
         return await _context.Events
             .Where(p => p.EventType == typeOfEvent)
@@ -34,7 +33,7 @@ public class EventRepository: BaseRepository, IEventRepository
             .ToListAsync();
     }
 
-    public async Task<Event> GetByIdAndArtistIdAsync(long eventId, long artistId)
+    public async Task<Domain.Models.Event> GetByIdAndArtistIdAsync(long eventId, long artistId)
     {
         return (await _context.Events
             .Where(p => p.EventId == eventId && p.ArtistId == artistId)
@@ -43,22 +42,22 @@ public class EventRepository: BaseRepository, IEventRepository
     }
 
 
-    public async Task AddAsync(Event artisticEvent)
+    public async Task AddAsync(Domain.Models.Event artisticEvent)
     {
         await _context.Events.AddAsync(artisticEvent);
     }
 
-    public async Task<Event> FindById(long id)
+    public async Task<Domain.Models.Event> FindById(long id)
     {
         return (await _context.Events.FindAsync(id))!;
     }
 
-    public void Update(Event artisticEvent)
+    public void Update(Domain.Models.Event artisticEvent)
     {
         _context.Events.Update(artisticEvent);
     }
 
-    public void Remove(Event artisticEvent)
+    public void Remove(Domain.Models.Event artisticEvent)
     {
         _context.Events.Remove(artisticEvent);
     }

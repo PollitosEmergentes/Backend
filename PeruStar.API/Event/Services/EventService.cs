@@ -1,11 +1,10 @@
-﻿using PeruStar.API.PeruStar.Domain.Models;
-using PeruStar.API.PeruStar.Domain.Models.Status;
-using PeruStar.API.PeruStar.Domain.Repositories;
-using PeruStar.API.PeruStar.Domain.Services;
-using PeruStar.API.PeruStar.Domain.Services.Communication;
+﻿using PeruStar.API.Event.Domain.Models.Status;
+using PeruStar.API.Event.Domain.Repositories;
+using PeruStar.API.Event.Domain.Services;
+using PeruStar.API.Event.Domain.Services.Communication;
 using PeruStar.API.Shared.Domain.Repositories;
 
-namespace PeruStar.API.PeruStar.Services;
+namespace PeruStar.API.Event.Services;
 
 public class EventService: IEventService
 {
@@ -18,32 +17,7 @@ public class EventService: IEventService
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<IEnumerable<Event>> ListAsync()
-    {
-        return await _eventRepository.ListAsync();  
-    }
-
-    public async Task<IEnumerable<Event>> ListAsyncByArtistId(long artistId)
-    {
-        return await _eventRepository.ListByArtistIdAsync(artistId);
-    }
-
-    public async Task<IEnumerable<Event>> ListAsyncByEventType(ETypeOfEvent eTypeOf)
-    {
-        return await _eventRepository.ListByEventTypeAsync(eTypeOf);
-    }
-
-    public async Task<EventResponse> GetByIdAndArtistIdAsync(long eventId, long artistId)
-    {
-        var existingEvent = await _eventRepository.GetByIdAndArtistIdAsync(eventId, artistId);
-
-        if (existingEvent.Equals(null))
-            return new EventResponse("Event not found.");
-
-        return new EventResponse(existingEvent);
-    }
-
-    public async Task<EventResponse> SaveAsync(long artistId, Event artistEvent)
+    public async Task<EventResponse> SaveAsync(long artistId, Domain.Models.Event artistEvent)
     {
         artistEvent.ArtistId = artistId;
         try
@@ -59,7 +33,7 @@ public class EventService: IEventService
         }
     }
 
-    public async Task<EventResponse> UpdateAsync(long eventId, long artistId, Event artistEvent)
+    public async Task<EventResponse> UpdateAsync(long eventId, long artistId, Domain.Models.Event artistEvent)
     {
         var existingEvent = await _eventRepository.GetByIdAndArtistIdAsync(eventId, artistId);
 

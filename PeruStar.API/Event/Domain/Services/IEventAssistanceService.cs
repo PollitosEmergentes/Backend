@@ -1,7 +1,7 @@
-﻿using PeruStar.API.PeruStar.Domain.Models;
-using PeruStar.API.PeruStar.Domain.Services.Communication;
+﻿using PeruStar.API.Event.Domain.Models;
+using PeruStar.API.Event.Domain.Services.Communication;
 
-namespace PeruStar.API.PeruStar.Domain.Services;
+namespace PeruStar.API.Event.Domain.Services;
 
 public interface IEventAssistanceService
 {

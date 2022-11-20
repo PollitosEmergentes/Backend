@@ -4,7 +4,7 @@ using PeruStar.API.Artist.Resource;
 using PeruStar.API.PeruStar.Domain.Services;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace PeruStar.API.Artwork.Controllers.Controllers;
+namespace PeruStar.API.Event.Interfaces.Rest.Controllers;
 
 
 [Route("/api/artists/{artistId}/followers")]

@@ -1,4 +1,4 @@
-﻿namespace PeruStar.API.PeruStar.Resources;
+﻿namespace PeruStar.API.Event.Resources;
 
 public class EventAssistanceResource
 {

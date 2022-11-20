@@ -3,12 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using PeruStar.API.Artwork.Domain.Services;
 using PeruStar.API.Artwork.Interfaces.Internal;
 using PeruStar.API.Artwork.Resources;
-using PeruStar.API.PeruStar.Domain.Services;
-using PeruStar.API.PeruStar.Resources;
 using PeruStar.API.Shared.Extensions;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace PeruStar.API.Artwork.Controllers;
+namespace PeruStar.API.Artwork.Interfaces.Rest.Controllers;
 
 
 [ApiController]

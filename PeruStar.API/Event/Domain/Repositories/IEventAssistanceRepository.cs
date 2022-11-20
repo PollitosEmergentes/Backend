@@ -1,6 +1,6 @@
-﻿using PeruStar.API.PeruStar.Domain.Models;
+﻿using PeruStar.API.Event.Domain.Models;
 
-namespace PeruStar.API.PeruStar.Domain.Repositories;
+namespace PeruStar.API.Event.Domain.Repositories;
 
 public interface IEventAssistanceRepository
 {

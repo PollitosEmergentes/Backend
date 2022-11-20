@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using PeruStar.API.PeruStar.Domain.Models;
+using PeruStar.API.Event.Domain.Services;
+using PeruStar.API.Event.Interfaces.Internal;
+using PeruStar.API.Event.Resources;
 using PeruStar.API.PeruStar.Domain.Services;
 using PeruStar.API.PeruStar.Resources;
 using PeruStar.API.Shared.Extensions;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace PeruStar.API.Artwork.Controllers.Controllers;
+namespace PeruStar.API.Event.Interfaces.Rest.Controllers;
 
 [ApiController]
 [Route("api/artists/{artistId}/events")]
@@ -14,13 +16,15 @@ namespace PeruStar.API.Artwork.Controllers.Controllers;
 [SwaggerTag("Create, read, update, and delete events for an artist.")]
 public class EventsController : ControllerBase
 {
-    private readonly IEventService _eventService;
+        private readonly IEventService _eventService;
+        private readonly IEventFacade _eventFacade;
         private readonly IMapper _mapper;
 
-        public EventsController(IEventService eventService, IMapper mapper)
+        public EventsController(IEventService eventService, IMapper mapper, IEventFacade eventFacade)
         {
             _eventService = eventService;
-            _mapper = mapper; 
+            _mapper = mapper;
+            _eventFacade = eventFacade;
         }
 
 
@@ -40,8 +44,8 @@ public class EventsController : ControllerBase
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IEnumerable<EventResource>> GetAllByArtistIdAsync(long artistId)
         {
-            var events = await _eventService.ListAsyncByArtistId(artistId);
-            var resources = _mapper.Map<IEnumerable<Event>, IEnumerable<EventResource>>(events);
+            var events = await _eventFacade.ListAsyncByArtistId(artistId);
+            var resources = _mapper.Map<IEnumerable<Domain.Models.Event>, IEnumerable<EventResource>>(events);
             return resources;
         }
 
@@ -62,10 +66,10 @@ public class EventsController : ControllerBase
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IActionResult> GetByIdAsync(long eventId, long artistId)
         {
-            var result = await _eventService.GetByIdAndArtistIdAsync(eventId, artistId);
+            var result = await _eventFacade.GetByIdAndArtistIdAsync(eventId, artistId);
             if (!result.Success)
                 return BadRequest(result.Message);
-            var eventResource = _mapper.Map<Event, EventResource>(result.Resource);
+            var eventResource = _mapper.Map<Domain.Models.Event, EventResource>(result.Resource);
             return Ok(eventResource);
         }
 
@@ -89,12 +93,12 @@ public class EventsController : ControllerBase
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
 
-            var _event = _mapper.Map<SaveEventResource, Event>(resource);
+            var _event = _mapper.Map<SaveEventResource, Domain.Models.Event>(resource);
             var result = await _eventService.SaveAsync(artistId, _event);
 
             if (!result.Success)
                 return BadRequest(result.Message);
-            var eventResource = _mapper.Map<Event, EventResource>(result.Resource);
+            var eventResource = _mapper.Map<Domain.Models.Event, EventResource>(result.Resource);
             return Ok(eventResource);
 
         }
@@ -119,13 +123,13 @@ public class EventsController : ControllerBase
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
 
-            var _event = _mapper.Map<SaveEventResource, Event>(resource);
+            var _event = _mapper.Map<SaveEventResource, Domain.Models.Event>(resource);
             var result = await _eventService.UpdateAsync(eventId, artistId, _event);
 
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var eventResource = _mapper.Map<Event, EventResource>(result.Resource);
+            var eventResource = _mapper.Map<Domain.Models.Event, EventResource>(result.Resource);
             return Ok(eventResource);
         }
 
@@ -150,7 +154,7 @@ public class EventsController : ControllerBase
             if (!result.Success)
                 return BadRequest(result.Message);
 
-            var eventResource = _mapper.Map<Event, EventResource>(result.Resource);
+            var eventResource = _mapper.Map<Domain.Models.Event, EventResource>(result.Resource);
             return Ok(eventResource);
         }
 }

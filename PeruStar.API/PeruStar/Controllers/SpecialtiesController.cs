@@ -6,7 +6,7 @@ using PeruStar.API.PeruStar.Resources;
 using PeruStar.API.Shared.Extensions;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace PeruStar.API.Artwork.Controllers.Controllers
+namespace PeruStar.API.Event.Interfaces.Rest.Controllers
 {
     public class SpecialtiesController : ControllerBase
     {

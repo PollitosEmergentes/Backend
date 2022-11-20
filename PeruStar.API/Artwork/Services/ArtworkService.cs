@@ -7,7 +7,7 @@ using PeruStar.API.Shared.Domain.Repositories;
 
 namespace PeruStar.API.Artwork.Services;
 
-public class ArtworkService : IArtworkService, IArtistFacade
+public class ArtworkService : IArtworkService
 {
     
     private readonly IArtworkRepository _artworkRepository;
@@ -21,26 +21,6 @@ public class ArtworkService : IArtworkService, IArtistFacade
         _artistRepository = artistRepository;
     }
 
-    public async Task<IEnumerable<Domain.Models.Artwork>> ListAsync()
-    {
-        return await _artworkRepository.ListAsync();
-    }
-
-    public async Task<IEnumerable<Domain.Models.Artwork>> ListByArtistIdAsync(long id)
-    {
-        return await _artworkRepository.ListByArtistIdAsync(id);
-    }
-
-    public async Task<ArtworkResponse> FindByIdAndArtistIdAsync(long id, long artistId)
-    {
-        var existingArtwork = await _artworkRepository.FindByIdAndArtistIdAsync(id, artistId);
-
-        if (existingArtwork.Equals(null))
-            return new ArtworkResponse("Artwork not found.");
-
-        return new ArtworkResponse(existingArtwork);
-    }
-    
     public async Task<ArtworkResponse> SaveAsync(long artistId, Domain.Models.Artwork artwork)
     {
         try
@@ -119,9 +99,5 @@ public class ArtworkService : IArtworkService, IArtistFacade
 
         return true;
     }
-
-    public async Task<IEnumerable<Domain.Models.Artwork>> ListByHobbyistAsync(long hobbyistId)
-    {
-        throw new NotImplementedException(); // Todavia no se implementa
-    }
+    
 }

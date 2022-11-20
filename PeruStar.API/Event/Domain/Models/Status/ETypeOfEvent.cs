@@ -1,4 +1,4 @@
-﻿namespace PeruStar.API.PeruStar.Domain.Models.Status;
+﻿namespace PeruStar.API.Event.Domain.Models.Status;
 
 public enum ETypeOfEvent
 {

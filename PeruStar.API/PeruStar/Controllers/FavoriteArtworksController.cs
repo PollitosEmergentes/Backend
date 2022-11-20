@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PeruStar.API.Artwork.Domain.Services;
+using PeruStar.API.Artwork.Interfaces.Internal;
 using PeruStar.API.Artwork.Resources;
 using PeruStar.API.PeruStar.Domain.Services;
-using PeruStar.API.PeruStar.Resources;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace PeruStar.API.Artwork.Controllers.Controllers;
+namespace PeruStar.API.Event.Interfaces.Rest.Controllers;
 
 [ApiController]
 [Route("api/hobbyists/{hobbyistId}/artworks")]
@@ -16,13 +16,15 @@ public class FavoriteArtworksController: ControllerBase
 {
     private readonly IFavoriteArtworkService _favoriteArtworkService;
         private readonly IArtworkService _artworkService;
+        private readonly IArtworkFacade _artworkFacade;
         private readonly IMapper _mapper;
 
-        public FavoriteArtworksController(IFavoriteArtworkService favoriteArtworkService, IMapper mapper, IArtworkService artworkService)
+        public FavoriteArtworksController(IFavoriteArtworkService favoriteArtworkService, IMapper mapper, IArtworkService artworkService, IArtworkFacade artworkFacade)
         {
             _favoriteArtworkService = favoriteArtworkService;
             _mapper = mapper;
             _artworkService = artworkService;
+            _artworkFacade = artworkFacade;
         }
 
 
@@ -42,8 +44,8 @@ public class FavoriteArtworksController: ControllerBase
         [ProducesResponseType(typeof(BadRequestResult), 404)]
         public async Task<IEnumerable<ArtworkResource>> GetAllByHobbyistIdAsync(long hobbyistId)
         {
-            var artworks = await _artworkService.ListByHobbyistAsync(hobbyistId);
-            var resources = _mapper.Map<IEnumerable<Domain.Models.Artwork>, IEnumerable<ArtworkResource>>(artworks);
+            var artworks = await _artworkFacade.ListByHobbyistAsync(hobbyistId);
+            var resources = _mapper.Map<IEnumerable<Artwork.Domain.Models.Artwork>, IEnumerable<ArtworkResource>>(artworks);
             return resources;
         }
 
@@ -67,7 +69,7 @@ public class FavoriteArtworksController: ControllerBase
             var result = await _favoriteArtworkService.AssignFavoriteArtworkAsync(hobbyistId, artworkId);
             if (!result.Success)
                 return BadRequest(result.Message);
-            var artworkResource = _mapper.Map<Domain.Models.Artwork, ArtworkResource>(result.Resource.Artwork!);
+            var artworkResource = _mapper.Map<Artwork.Domain.Models.Artwork, ArtworkResource>(result.Resource.Artwork!);
             return Ok(artworkResource);
         }
 
@@ -91,7 +93,7 @@ public class FavoriteArtworksController: ControllerBase
             var result = await _favoriteArtworkService.UnassignFavoriteArtworkAsync(hobbyistId, artworkId);
             if (!result.Success)
                 return BadRequest(result.Message);
-            var favoriteArtworkResource = _mapper.Map<Domain.Models.Artwork, ArtworkResource>(result.Resource.Artwork!);
+            var favoriteArtworkResource = _mapper.Map<Artwork.Domain.Models.Artwork, ArtworkResource>(result.Resource.Artwork!);
             return Ok(favoriteArtworkResource);
         }
 }

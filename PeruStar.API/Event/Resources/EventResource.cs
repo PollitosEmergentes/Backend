@@ -1,6 +1,6 @@
-﻿using PeruStar.API.PeruStar.Domain.Models.Status;
+﻿using PeruStar.API.Event.Domain.Models.Status;
 
-namespace PeruStar.API.PeruStar.Resources;
+namespace PeruStar.API.Event.Resources;
 
 public class EventResource
 {

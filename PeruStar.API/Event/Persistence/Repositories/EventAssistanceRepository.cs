@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PeruStar.API.PeruStar.Domain.Models;
-using PeruStar.API.PeruStar.Domain.Repositories;
+using PeruStar.API.Event.Domain.Models;
+using PeruStar.API.Event.Domain.Repositories;
 using PeruStar.API.Shared.Persistence.Contexts;
 using PeruStar.API.Shared.Persistence.Repositories;
 
-namespace PeruStar.API.PeruStar.Persistence.Repositories;
+namespace PeruStar.API.Event.Persistence.Repositories;
 
 public class EventAssistanceRepository: BaseRepository, IEventAssistanceRepository
 {

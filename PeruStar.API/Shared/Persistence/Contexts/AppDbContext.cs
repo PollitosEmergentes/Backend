@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PeruStar.API.Event.Domain.Models;
+using PeruStar.API.Event.Domain.Models.Status;
 using PeruStar.API.PeruStar.Domain.Models;
-using PeruStar.API.PeruStar.Domain.Models.Status;
 using PeruStar.API.Security.Domain.Models;
 using PeruStar.API.Shared.Extensions;
 
@@ -16,7 +17,7 @@ public class AppDbContext: DbContext
     public DbSet<Artwork.Domain.Models.Artwork> Artworks { get; set; } = null!;
     public DbSet<ClaimTicket> ClaimTickets { get; set; } = null!;
     public DbSet<EventAssistance> EventAssistances { get; set; } = null!;
-    public DbSet<Event> Events { get; set; } = null!;
+    public DbSet<Event.Domain.Models.Event> Events { get; set; } = null!;
     public DbSet<FavoriteArtwork> FavoriteArtworks { get; set; } = null!;
     public DbSet<User> Users { get; set; } = null!;
     public DbSet<Specialty> Specialties { get; set; } = null!;
@@ -210,27 +211,27 @@ public class AppDbContext: DbContext
             
         
         // Event entity
-        builder.Entity<Event>().ToTable("Events");
+        builder.Entity<Event.Domain.Models.Event>().ToTable("Events");
 
-        builder.Entity<Event>().HasKey(p => p.EventId);
-        builder.Entity<Event>().Property(p => p.EventId).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<Event>().Property(p => p.EventTitle).IsRequired().HasMaxLength(100);
-        builder.Entity<Event>().Property(p => p.EventType).IsRequired().HasConversion(
+        builder.Entity<Event.Domain.Models.Event>().HasKey(p => p.EventId);
+        builder.Entity<Event.Domain.Models.Event>().Property(p => p.EventId).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Event.Domain.Models.Event>().Property(p => p.EventTitle).IsRequired().HasMaxLength(100);
+        builder.Entity<Event.Domain.Models.Event>().Property(p => p.EventType).IsRequired().HasConversion(
             type => type.ToString(),                                                 
             type => (ETypeOfEvent)Enum.Parse(typeof(ETypeOfEvent), type));  
-        builder.Entity<Event>().Property(p => p.DateStart).IsRequired();
-        builder.Entity<Event>().Property(p => p.DateEnd).IsRequired();
-        builder.Entity<Event>().Property(p => p.EventDescription).IsRequired().HasMaxLength(250);
-        builder.Entity<Event>().Property(p => p.EventAditionalInfo);
+        builder.Entity<Event.Domain.Models.Event>().Property(p => p.DateStart).IsRequired();
+        builder.Entity<Event.Domain.Models.Event>().Property(p => p.DateEnd).IsRequired();
+        builder.Entity<Event.Domain.Models.Event>().Property(p => p.EventDescription).IsRequired().HasMaxLength(250);
+        builder.Entity<Event.Domain.Models.Event>().Property(p => p.EventAditionalInfo);
         
         // Relationships
         
-        builder.Entity<Event>()
+        builder.Entity<Event.Domain.Models.Event>()
             .HasOne(p => p.Artist)
             .WithMany(p => p.Events)
             .HasForeignKey(p => p.ArtistId);
         
-        builder.Entity<Event>()
+        builder.Entity<Event.Domain.Models.Event>()
             .HasMany(p=>p.Assistance)
             .WithOne(p=>p.Event)
             .HasForeignKey(p=>p.EventId);

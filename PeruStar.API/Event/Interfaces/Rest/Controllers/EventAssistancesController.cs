@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using PeruStar.API.PeruStar.Domain.Models;
+using PeruStar.API.Event.Domain.Services;
+using PeruStar.API.Event.Resources;
 using PeruStar.API.PeruStar.Domain.Services;
 using PeruStar.API.PeruStar.Resources;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace PeruStar.API.Artwork.Controllers.Controllers;
+namespace PeruStar.API.Event.Interfaces.Rest.Controllers;
 
 [ApiController]
 [Route("api/hobbyists/{hobbyistId}/events")]
@@ -67,7 +68,7 @@ public class EventAssistancesController : ControllerBase
             var result = await _eventAssistanceService.AssignEventAssistanceAsync(hobbyistId, eventId, resource.AttendanceDay);
             if (!result.Success)
                 return BadRequest(result.Message);
-            var eventResource = _mapper.Map<Event, EventResource>(result.Resource.Event!);
+            var eventResource = _mapper.Map<Domain.Models.Event, EventResource>(result.Resource.Event!);
             return Ok(eventResource);
         }
 
@@ -89,7 +90,7 @@ public class EventAssistancesController : ControllerBase
             var result = await _eventAssistanceService.UnassignEventAssistanceAsync(hobbyistId, eventId);
             if (!result.Success)
                 return BadRequest(result.Message);
-            var eventResource = _mapper.Map<Event, EventResource>(result.Resource.Event!);
+            var eventResource = _mapper.Map<Domain.Models.Event, EventResource>(result.Resource.Event!);
             return Ok(eventResource);
         }
 }

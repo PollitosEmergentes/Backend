@@ -1,4 +1,6 @@
-﻿namespace PeruStar.API.PeruStar.Domain.Models;
+﻿using PeruStar.API.Event.Domain.Models;
+
+namespace PeruStar.API.PeruStar.Domain.Models;
 
 public class Hobbyist : Person
 {
