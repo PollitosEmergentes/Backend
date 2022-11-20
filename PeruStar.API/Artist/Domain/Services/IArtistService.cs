@@ -1,5 +1,4 @@
 ﻿using PeruStar.API.Artist.Domain.Services.Communication;
-using PeruStar.API.PeruStar.Domain.Services.Communication;
 
 namespace PeruStar.API.Artist.Domain.Services;
 

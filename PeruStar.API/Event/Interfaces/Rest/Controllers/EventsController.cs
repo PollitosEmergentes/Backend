@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using PeruStar.API.Event.Domain.Services;
 using PeruStar.API.Event.Interfaces.Internal;
 using PeruStar.API.Event.Resources;
-using PeruStar.API.PeruStar.Domain.Services;
 using PeruStar.API.PeruStar.Resources;
 using PeruStar.API.Shared.Extensions;
 using Swashbuckle.AspNetCore.Annotations;

@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using PeruStar.API.Artist.Domain.Models;
 using PeruStar.API.Artist.Resource;
+using PeruStar.API.Hobbyist.Domain.Services;
+using PeruStar.API.Hobbyist.Resources;
 using PeruStar.API.PeruStar.Domain.Models;
-using PeruStar.API.PeruStar.Domain.Services;
 using PeruStar.API.PeruStar.Resources;
 using Swashbuckle.AspNetCore.Annotations;
 

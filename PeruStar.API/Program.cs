@@ -12,10 +12,10 @@ using PeruStar.API.Event.Domain.Repositories;
 using PeruStar.API.Event.Domain.Services;
 using PeruStar.API.Event.Persistence.Repositories;
 using PeruStar.API.Event.Services;
-using PeruStar.API.PeruStar.Domain.Repositories;
-using PeruStar.API.PeruStar.Domain.Services;
-using PeruStar.API.PeruStar.Persistence.Repositories;
-using PeruStar.API.PeruStar.Services;
+using PeruStar.API.Hobbyist.Domain.Repositories;
+using PeruStar.API.Hobbyist.Domain.Services;
+using PeruStar.API.Hobbyist.Persistence.Repositories;
+using PeruStar.API.Hobbyist.Services;
 using PeruStar.API.Security.Authorization.Handlers.Implementations;
 using PeruStar.API.Security.Authorization.Handlers.Interfaces;
 using PeruStar.API.Security.Authorization.Middleware;
@@ -27,6 +27,10 @@ using PeruStar.API.Security.Services;
 using PeruStar.API.Shared.Domain.Repositories;
 using PeruStar.API.Shared.Persistence.Contexts;
 using PeruStar.API.Shared.Persistence.Repositories;
+using PeruStar.API.Specialty.Domain.Repositories;
+using PeruStar.API.Specialty.Domain.Services;
+using PeruStar.API.Specialty.Persistence.Repositories;
+using PeruStar.API.Specialty.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 //Sebas estuvo aqui
@@ -142,7 +146,13 @@ builder.Services.AddAutoMapper(
     typeof(PeruStar.API.Artwork.Mapping.ModelToResourceProfile),
     typeof(PeruStar.API.Artwork.Mapping.ResourceToModelProfile),
     typeof(PeruStar.API.Event.Mapping.ModelToResourceProfile),
-    typeof(PeruStar.API.Event.Mapping.ResourceToModelProfile));
+    typeof(PeruStar.API.Event.Mapping.ResourceToModelProfile),
+    typeof(PeruStar.API.Follower.Mapping.ModelToResourceProfile),
+    typeof(PeruStar.API.Follower.Mapping.ResourceToModelProfile),
+    typeof(PeruStar.API.Hobbyist.Mapping.ModelToResourceProfile),
+    typeof(PeruStar.API.Hobbyist.Mapping.ResourceToModelProfile),
+    typeof(PeruStar.API.Specialty.Mapping.ModelToResourceProfile),
+    typeof(PeruStar.API.Specialty.Mapping.ResourceToModelProfile));
 
 var app = builder.Build();
 

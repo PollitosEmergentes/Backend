@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PeruStar.API.Artist.Domain.Models;
+using PeruStar.API.Artwork.Domain.Models;
 using PeruStar.API.Event.Domain.Models;
 using PeruStar.API.Event.Domain.Models.Status;
 using PeruStar.API.PeruStar.Domain.Models;
@@ -20,10 +22,10 @@ public class AppDbContext: DbContext
     public DbSet<Event.Domain.Models.Event> Events { get; set; } = null!;
     public DbSet<FavoriteArtwork> FavoriteArtworks { get; set; } = null!;
     public DbSet<User> Users { get; set; } = null!;
-    public DbSet<Specialty> Specialties { get; set; } = null!;
-    public DbSet<Hobbyist> Hobbyists { get; set; } = null!;
+    public DbSet<Specialty.Domain.Models.Specialty> Specialties { get; set; } = null!;
+    public DbSet<Hobbyist.Domain.Models.Hobbyist> Hobbyists { get; set; } = null!;
 
-    public DbSet<Follower> Followers { get; set; } = null!;
+    public DbSet<Follower.Domain.Models.Follower> Followers { get; set; } = null!;
     public DbSet<Interest> Interests { get; set; } = null!;
 
     // Structure of the database
@@ -31,19 +33,19 @@ public class AppDbContext: DbContext
     {
         base.OnModelCreating(builder);
         
-        builder.Entity<Follower>().ToTable("Followers");
-        builder.Entity<Follower>().HasKey(pt =>pt.Id);
-        builder.Entity<Follower>().Property(pt => pt.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<Follower>().Property(pt => pt.FollowerId).IsRequired();
-        builder.Entity<Follower>().Property(pt => pt.ArtistId).IsRequired();
+        builder.Entity<Follower.Domain.Models.Follower>().ToTable("Followers");
+        builder.Entity<Follower.Domain.Models.Follower>().HasKey(pt =>pt.Id);
+        builder.Entity<Follower.Domain.Models.Follower>().Property(pt => pt.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Follower.Domain.Models.Follower>().Property(pt => pt.FollowerId).IsRequired();
+        builder.Entity<Follower.Domain.Models.Follower>().Property(pt => pt.ArtistId).IsRequired();
 
         // Relationships
-        builder.Entity<Follower>()
+        builder.Entity<Follower.Domain.Models.Follower>()
             .HasOne(pt => pt.Hobbyist)
             .WithMany(p => p.Followers)
             .HasForeignKey(pt => pt.HobbyistId);
 
-        builder.Entity<Follower>()
+        builder.Entity<Follower.Domain.Models.Follower>()
             .HasOne(pt => pt.Artist)
             .WithMany(p => p.Followers)
             .HasForeignKey(pt => pt.ArtistId);
@@ -247,19 +249,19 @@ public class AppDbContext: DbContext
         // Hobbyist entity
 
         //Specialty Entity
-        builder.Entity<Specialty>().ToTable("Specialties");
-        builder.Entity<Specialty>().HasKey(s => s.SpecialtyId);
-        builder.Entity<Specialty>().Property(s => s.SpecialtyId).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<Specialty>().Property(s => s.Name).IsRequired().HasMaxLength(50);
+        builder.Entity<Specialty.Domain.Models.Specialty>().ToTable("Specialties");
+        builder.Entity<Specialty.Domain.Models.Specialty>().HasKey(s => s.SpecialtyId);
+        builder.Entity<Specialty.Domain.Models.Specialty>().Property(s => s.SpecialtyId).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Specialty.Domain.Models.Specialty>().Property(s => s.Name).IsRequired().HasMaxLength(50);
         
         //Relationships
         
-        builder.Entity<Specialty>()
+        builder.Entity<Specialty.Domain.Models.Specialty>()
             .HasMany(s => s.Artists)
             .WithOne(s => s.Specialty)
             .HasForeignKey(s => s.SpecialtyId);
         
-        builder.Entity<Specialty>()
+        builder.Entity<Specialty.Domain.Models.Specialty>()
             .HasMany(s=>s.Interests)
             .WithOne(s=>s.Specialty)
             .HasForeignKey(s=>s.SpecialtyId);
@@ -284,32 +286,32 @@ public class AppDbContext: DbContext
         // Relationships
         
         // Hobbyist entity
-        builder.Entity<Hobbyist>().ToTable("Hobbyists");
-        builder.Entity<Hobbyist>().Property(h => h.Firstname).IsRequired().HasMaxLength(50);
-        builder.Entity<Hobbyist>().Property(h => h.Lastname).IsRequired().HasMaxLength(50);
+        builder.Entity<Hobbyist.Domain.Models.Hobbyist>().ToTable("Hobbyists");
+        builder.Entity<Hobbyist.Domain.Models.Hobbyist>().Property(h => h.Firstname).IsRequired().HasMaxLength(50);
+        builder.Entity<Hobbyist.Domain.Models.Hobbyist>().Property(h => h.Lastname).IsRequired().HasMaxLength(50);
  
         
-        builder.Entity<Hobbyist>()
+        builder.Entity<Hobbyist.Domain.Models.Hobbyist>()
             .HasMany(h => h.Interests)
             .WithOne(h => h.Hobbyist)
             .HasForeignKey(h => h.HobbyistId);
         
-        builder.Entity<Hobbyist>()
+        builder.Entity<Hobbyist.Domain.Models.Hobbyist>()
             .HasMany(h=>h.FavoriteArtworks)
             .WithOne(h=>h.Hobbyist)
             .HasForeignKey(h=>h.HobbyistId);
         
-        builder.Entity<Hobbyist>()
+        builder.Entity<Hobbyist.Domain.Models.Hobbyist>()
             .HasMany(h=>h.Followers)
             .WithOne(h=>h.Hobbyist)
             .HasForeignKey(h=>h.HobbyistId);
         
-        builder.Entity<Hobbyist>()
+        builder.Entity<Hobbyist.Domain.Models.Hobbyist>()
             .HasMany(h=>h.Assistance)
             .WithOne(h=>h.Hobbyist)
             .HasForeignKey(h=>h.HobbyistId);
         
-        builder.Entity<Hobbyist>()
+        builder.Entity<Hobbyist.Domain.Models.Hobbyist>()
             .HasMany(h=>h.ClaimTickets)
             .WithOne(h=>h.Hobbyist)
             .HasForeignKey(h=>h.HobbyistId);
