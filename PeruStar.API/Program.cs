@@ -140,8 +140,9 @@ builder.Services.AddAutoMapper(
     typeof(PeruStar.API.Artist.Mapping.ModelToResourceProfile),
     typeof(PeruStar.API.Artist.Mapping.ResourceToModelProfile),
     typeof(PeruStar.API.Artwork.Mapping.ModelToResourceProfile),
-    typeof(PeruStar.API.Artwork.Mapping.ResourceToModelProfile)
-    );
+    typeof(PeruStar.API.Artwork.Mapping.ResourceToModelProfile),
+    typeof(PeruStar.API.Event.Mapping.ModelToResourceProfile),
+    typeof(PeruStar.API.Event.Mapping.ResourceToModelProfile));
 
 var app = builder.Build();
 

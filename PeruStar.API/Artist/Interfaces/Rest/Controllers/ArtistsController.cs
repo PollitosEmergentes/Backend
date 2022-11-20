@@ -1,14 +1,12 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using PeruStar.API.PeruStar.Domain.Services;
-using PeruStar.API.PeruStar.Resources;
-using PeruStar.API.Artist.Domain.Models;
 using PeruStar.API.Artist.Domain.Services;
+using PeruStar.API.Artist.Interfaces.Internal;
 using PeruStar.API.Artist.Resource;
 using PeruStar.API.Shared.Extensions;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace PeruStar.API.Artist.Controllers;
+namespace PeruStar.API.Artist.Interfaces.Rest.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -17,12 +15,14 @@ namespace PeruStar.API.Artist.Controllers;
 public class ArtistsController : ControllerBase
 {
     private readonly IArtistService _artistService;
+    private readonly IArtistFacade _artistFacade;
     private readonly IMapper _mapper;
 
-    public ArtistsController(IArtistService artistService, IMapper mapper)
+    public ArtistsController(IArtistService artistService, IMapper mapper, IArtistFacade artistFacade)
     {
         _artistService = artistService;
         _mapper = mapper;
+        _artistFacade = artistFacade;
     }
 
 
@@ -40,7 +40,7 @@ public class ArtistsController : ControllerBase
     [ProducesResponseType(typeof(BadRequestResult), 404)]
     public async Task<IEnumerable<ArtistResource>> GetAllAsync()
     {
-        var artist = await _artistService.ListAsync();
+        var artist = await _artistFacade.ListAsync();
         var resources = _mapper.Map<IEnumerable<Domain.Models.Artist>, IEnumerable<ArtistResource>>(artist);
         return resources;
     }
@@ -60,7 +60,7 @@ public class ArtistsController : ControllerBase
     [ProducesResponseType(typeof(BadRequestResult), 404)]
     public async Task<IActionResult> GetByIdAsync(long artistId)
     {
-        var result = await _artistService.GetByIdAsync(artistId);
+        var result = await _artistFacade.GetByIdAsync(artistId);
         if (!result.Success)
             return BadRequest(result.Message);
         var artistResource = _mapper.Map<Domain.Models.Artist, ArtistResource>(result.Resource);

@@ -16,21 +16,6 @@ public class ArtistService : IArtistService
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<IEnumerable<Domain.Models.Artist>> ListAsync()
-    {
-        return await _artistRepository.ListAsync();
-    }
-
-    public Task<IEnumerable<Domain.Models.Artist>> ListByHobbyistIdAsync(int hobbyistId)
-    {
-        throw new NotImplementedException(); // Falta Folower
-    }
-
-    public async Task<ArtistResponse> GetByIdAsync(long id)
-    {
-        return new ArtistResponse(await _artistRepository.FindById(id));
-    }
-
     public async Task<ArtistResponse> SaveAsync(Domain.Models.Artist artist)
     {
         try

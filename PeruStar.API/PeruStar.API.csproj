@@ -23,7 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Artist\Interfaces\Rest" />
+      <Folder Include="Artist\Controllers" />
     </ItemGroup>
 
 </Project>
