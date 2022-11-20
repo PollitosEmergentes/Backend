@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EnW+hYsla+jUUqwUsLjRP5Vk15TqT1jVM3gY3ggYEuglFsuTpoG97iC4q5F7FyjqdwFxa3GBtDbxTdzsbHt3Zw==",
+  "dgSpecHash": "i+fB475BQ1vYCr/IU3kkfjHr4toFppacP6rd5ykkTX5EeESimsaD4tzoFl4plVJpEObfK/XxZPbJ7HGRuQ15YA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Sho Lee\\Documents\\8vo ciclo UPC\\Emergentes\\Sebas\\Backend\\Backend\\PeruStar.API\\PeruStar.API.csproj",
+  "projectFilePath": "C:\\Users\\Sho Lee\\Documents\\8vo ciclo UPC\\Emergentes\\Backend\\Backend\\PeruStar.API\\PeruStar.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sho Lee\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\Sho Lee\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
